@@ -1,0 +1,6 @@
+/market_mover_monitor_venv/
+/src/ibapi/
+/ibapi.egg-info/
+/tests/
+.vscode
+__pycache__
