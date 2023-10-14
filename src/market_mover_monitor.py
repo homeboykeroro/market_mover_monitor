@@ -1,5 +1,6 @@
 import os
 import time
+import traceback
 
 from exception.connection_exception import ConnectionException
 from exception.after_hour_reset_exception import AfterHourResetException
@@ -25,41 +26,29 @@ def main():
 
     try:
         while True:
-            current_datetime = get_current_datetime()
 
-            #Ensure scanner is running in trading hours
-            if is_premarket_hours(current_datetime) or is_normal_trading_hours(current_datetime) or is_postmarket_hours(current_datetime):
-                
-                if is_premarket_hours(current_datetime) or is_normal_trading_hours(current_datetime):
-                    gainer_scan_code = ScanCode.TOP_GAINERS.value
-                    is_after_hour = False
-                elif is_postmarket_hours(current_datetime):
-                    gainer_scan_code = ScanCode.TOP_GAINERS_IN_AFTER_HOURS.value
-                    is_after_hour = True
+            gainer_scan_code = ScanCode.TOP_GAINERS_IN_AFTER_HOURS.value
+            is_after_hour = True
+    
+            print('Listening...')
+            text_to_speech_engine.speak('Connecting')
+            connector = IBConnector(is_after_hour)
+            connector.connect('127.0.0.1', 7496, 0)
+    
+            #API Scanner subscriptions update every 30 seconds, just as they do in TWS.
+            filter = get_filter(scan_code = gainer_scan_code, instrument = Instrument.STOCKS.value, 
+                            min_price = 0.8, min_volume = 5000, 
+                            include_otc = False,
+                            no_of_result = 25)
+            connector.reqScannerSubscription(0, filter, [], [])
+            connector.run()
 
-                print('Listening...')
-                text_to_speech_engine.speak('Connecting')
-
-                connector = IBConnector(is_after_hour)
-                connector.connect('127.0.0.1', 7496, 0)
-
-                #API Scanner subscriptions update every 30 seconds, just as they do in TWS.
-                filter = get_filter(scan_code = gainer_scan_code, instrument = Instrument.STOCKS.value, 
-                                min_price = 0.8, min_volume = 5000, 
-                                include_otc = False,
-                                no_of_result = 25)
-                connector.reqScannerSubscription(0, filter, [], [])
-                connector.run()
-            elif not is_idle_msg_print:
-                print('Scanner is idle till valid trading hours...')
-                text_to_speech_engine.speak('Scanner is idle')
-                is_idle_msg_print = True
     except Exception as e:
         if connector:
             connector.disconnect()
 
         if isinstance(e, ConnectionException):
-            sleep_time = 80
+            sleep_time = 60
 
             os.system('cls')
             logger.exception(f'TWS API Connection Lost, Cause: {e}')
@@ -74,6 +63,7 @@ def main():
             sleep_time = 10
 
             os.system('cls')
+            logger.debug(traceback.format_exc())
             logger.exception(f'Fatal Error, Cause: {e}')
             text_to_speech_engine.speak('Re-establishing Connection Due to Fatal Error')
         

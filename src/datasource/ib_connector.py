@@ -33,7 +33,7 @@ class IBConnector(EWrapper, EClient):
         self.__start_time = None
         self.__is_after_hour = is_after_hour
 
-    def error(self, reqId: TickerId, errorCode: int, errorString: str):
+    def error(self, reqId:TickerId, errorCode:int, errorString:str, advancedOrderRejectJson = ""):
         ''' Callbacks to EWrapper with errorId as -1 do not represent true 'errors' but only 
         notification that a connector has been made successfully to the IB market data farms. '''
         success_error_code_list = [2104, 2105, 2106, 2108, 2158]
@@ -53,7 +53,7 @@ class IBConnector(EWrapper, EClient):
         low = bar.low
         close = bar.close
         volume = bar.volume * 100
-        dt = bar.date
+        dt = bar.date.replace(" US/Eastern", "")
 
         timeframe_idx = (reqId - 1) // len(self.__scanner_result_list)
         self.__timeframe_idx_to_ohlcv_list_dict[timeframe_idx].append([open, high, low, close, volume])
