@@ -9,7 +9,6 @@ from constant.filter.scan_code import ScanCode
 from constant.instrument import Instrument
 
 from utils.log_util import get_logger
-from utils.file_util import clean_txt_file_content
 from utils.filter_util import get_filter
 from utils.datetime_util import get_current_datetime, is_normal_trading_hours, is_postmarket_hours, is_premarket_hours
 
@@ -26,23 +25,35 @@ def main():
 
     try:
         while True:
+            current_datetime = get_current_datetime()
 
-            gainer_scan_code = ScanCode.TOP_GAINERS_IN_AFTER_HOURS.value
-            is_after_hour = True
-    
-            print('Listening...')
-            text_to_speech_engine.speak('Connecting')
-            connector = IBConnector(is_after_hour)
-            connector.connect('127.0.0.1', 7496, 0)
-    
-            #API Scanner subscriptions update every 30 seconds, just as they do in TWS.
-            filter = get_filter(scan_code = gainer_scan_code, instrument = Instrument.STOCKS.value, 
-                            min_price = 0.8, min_volume = 5000, 
-                            include_otc = False,
-                            no_of_result = 25)
-            connector.reqScannerSubscription(0, filter, [], [])
-            connector.run()
+            #Ensure scanner is running in trading hours
+            if is_premarket_hours(current_datetime) or is_normal_trading_hours(current_datetime) or is_postmarket_hours(current_datetime):
+                
+                if is_premarket_hours(current_datetime) or is_normal_trading_hours(current_datetime):
+                    gainer_scan_code = ScanCode.TOP_GAINERS.value
+                    is_after_hour = False
+                elif is_postmarket_hours(current_datetime):
+                    gainer_scan_code = ScanCode.TOP_GAINERS_IN_AFTER_HOURS.value
+                    is_after_hour = True
 
+                print('Listening...')
+                text_to_speech_engine.speak('Connecting')
+
+                connector = IBConnector(is_after_hour)
+                connector.connect('127.0.0.1', 7496, 0)
+
+                #API Scanner subscriptions update every 30 seconds, just as they do in TWS.
+                filter = get_filter(scan_code = gainer_scan_code, instrument = Instrument.STOCKS.value, 
+                                min_price = 0.8, min_volume = 5000, 
+                                include_otc = False,
+                                no_of_result = 15)
+                connector.reqScannerSubscription(0, filter, [], [])
+                connector.run()
+            elif not is_idle_msg_print:
+                print('Scanner is idle till valid trading hours...')
+                text_to_speech_engine.speak('Scanner is idle')
+                is_idle_msg_print = True
     except Exception as e:
         if connector:
             connector.disconnect()
@@ -73,6 +84,4 @@ def main():
         main()
 
 if __name__ == '__main__':
-    log_dir = 'log.txt'
-    clean_txt_file_content(log_dir)
     main()

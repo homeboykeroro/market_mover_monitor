@@ -3,6 +3,8 @@ PROJECT SETUP:
 
 1. Run `py -m venv VENV_NAME`
 2. Run `pip install -r requirements.txt`
+3. Run `pip install pyinstaller`
+4. Run `pyinstaller market_mover_monitor.py` to export this project as exe file
 
 
 HOW TO USE:
