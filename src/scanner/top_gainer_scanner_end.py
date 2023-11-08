@@ -200,7 +200,7 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                 scanner_connector.reqHistoricalData(get_previous_close_req_id, contract_detail.contract, '', '2 D', Timeframe.ONE_DAY.value, 'TRADES', 0, 1, False, [])
                 
     def __get_timeframe_candle(self, scanner_connector: ScannerConnector):
-            us_current_datetime = datetime.datetime.now().astimezone(pytz.timezone('US/Eastern'))
+            us_current_datetime = datetime.datetime.now()
             candle_start_datetime = get_trading_start_time_by_current_datetime(us_current_datetime)
             timeframe_interval = (us_current_datetime.time() - candle_start_datetime).seconds
             truncate_seconds = timeframe_interval % 60
