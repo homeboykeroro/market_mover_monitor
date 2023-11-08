@@ -1,34 +1,32 @@
 import time
-
-from pandas.core.frame import DataFrame
 import pandas as pd
-from constant.candle.candle_colour import CandleColour
+from pandas.core.frame import DataFrame
 
+from pattern.pattern_analyser import PatternAnalyser
+
+from constant.candle.candle_colour import CandleColour
 from constant.indicator.customised_indicator import CustomisedIndicator
 from constant.indicator.indicator import Indicator
 from constant.indicator.runtime_indicator import RuntimeIndicator
 
-from pattern.pattern_analyser import PatternAnalyser
-
-from utils.log_util import get_logger
-from model.text_to_speech_engine import TextToSpeechEngine
 from utils.dataframe_util import derive_idx_df
-
-logger = get_logger(console_log=False)
-text_to_speech_engine = TextToSpeechEngine()
+from utils.logger import Logger
 
 idx = pd.IndexSlice
+logger = Logger()
 
 class UnusualVolumeRampUp(PatternAnalyser):
+    MIN_MARUBOZU_RATIO = 60
+    MIN_CLOSE_PCT = 4.2
+    MIN_VOLUME = 3000
+    NOTIFY_PERIOD = 2
+        
     def __init__(self, historical_data_df: DataFrame):
         self.__historical_data_df = historical_data_df
 
     def analyse(self) -> None:
+        logger.log_debug_msg('Unusual ramp up scan', with_speech = False)
         start_time = time.time()
-        min_marubozu_ratio = 50
-        min_close_pct = 3
-        min_volume = 3000
-        notify_period = 2
 
         close_pct_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.CLOSE_CHANGE]].rename(columns={CustomisedIndicator.CLOSE_CHANGE: RuntimeIndicator.COMPARE})
         candle_colour_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.CANDLE_COLOUR]].rename(columns={CustomisedIndicator.CANDLE_COLOUR: RuntimeIndicator.COMPARE})
@@ -38,17 +36,17 @@ class UnusualVolumeRampUp(PatternAnalyser):
         vol_50_ma_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.MA_50_VOLUME]].rename(columns={CustomisedIndicator.MA_50_VOLUME: RuntimeIndicator.COMPARE})
         
         green_candle_df = (candle_colour_df == CandleColour.GREEN)
-        marubozu_boolean_df = (marubozu_ratio_df >= min_marubozu_ratio)
-        candle_close_pct_boolean_df = (close_pct_df >= min_close_pct)
+        marubozu_boolean_df = (marubozu_ratio_df >= self.MIN_MARUBOZU_RATIO)
+        candle_close_pct_boolean_df = (close_pct_df >= self.MIN_CLOSE_PCT)
         ramp_up_boolean_df = (green_candle_df) & (marubozu_boolean_df) & (candle_close_pct_boolean_df)
-        above_vol_20_ma_boolean_df = (volume_df >= vol_20_ma_df) & (vol_20_ma_df >= min_volume) & (ramp_up_boolean_df)
-        above_vol_50_ma_boolean_df = (volume_df >= vol_50_ma_df) & (vol_50_ma_df >= min_volume) & (ramp_up_boolean_df)
+        above_vol_20_ma_boolean_df = (volume_df >= vol_20_ma_df) & (vol_20_ma_df >= self.MIN_VOLUME) & (ramp_up_boolean_df)
+        above_vol_50_ma_boolean_df = (volume_df >= vol_50_ma_df) & (vol_50_ma_df >= self.MIN_VOLUME) & (ramp_up_boolean_df)
 
-        above_vol_20_ma_result_boolean_df = above_vol_20_ma_boolean_df.iloc[-notify_period:]
+        above_vol_20_ma_result_boolean_df = above_vol_20_ma_boolean_df.iloc[-self.NOTIFY_PERIOD:]
         above_vol_20_ma_result_series = above_vol_20_ma_result_boolean_df.any()
         above_vol_20_ma_ticker_list = above_vol_20_ma_result_series.index[above_vol_20_ma_result_series].get_level_values(0).tolist()
         
-        above_vol_50_ma_result_boolean_df = above_vol_50_ma_boolean_df.iloc[-notify_period:]
+        above_vol_50_ma_result_boolean_df = above_vol_50_ma_boolean_df.iloc[-self.NOTIFY_PERIOD:]
         above_vol_50_ma_result_series = above_vol_50_ma_result_boolean_df.any()
         above_vol_50_ma_ticker_list = above_vol_50_ma_result_series.index[above_vol_50_ma_result_series].get_level_values(0).tolist()
 
@@ -77,6 +75,7 @@ class UnusualVolumeRampUp(PatternAnalyser):
                         display_volume = pop_up_volume_df.loc[:, ticker].iat[0, 0]
                         display_close_pct = round(pop_up_close_pct_df.loc[:, ticker].iat[0, 0], 2)
                         display_ma_vol = pop_up_ma_vol_df.loc[:, ticker].iat[0, 0]
+                        display_previous_close_change = self.__historical_data_df.index[-1], idx[ticker, Indicator.CLOSE]
     
                         pop_up_datetime = pop_up_datetime_idx_df.loc[:, ticker].iat[0, 0]
                         pop_up_hour = pd.to_datetime(pop_up_datetime).hour
@@ -87,9 +86,8 @@ class UnusualVolumeRampUp(PatternAnalyser):
                         read_time_str = f'{pop_up_hour} {pop_up_minute}' if (pop_up_minute > 0) else f'{pop_up_hour} o clock' 
                         read_ticker_str = " ".join(ticker)
     
-                        logger.debug(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}')
-                        print(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}')
-                        text_to_speech_engine.speak(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(display_volume)/ display_ma_vol), 1)}')
+                        logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(display_volume)/ display_ma_vol), 1)}')
+                        logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close change: {display_previous_close_change}', with_speech = False)
 
-        logger.debug(f'Unusual volume analyse time: {time.time() - start_time}')
+        logger.log_debug_msg(f'Unusual volume analysis time: {time.time() - start_time} seconds', with_speech = False)
 

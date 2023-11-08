@@ -1,453 +1,0 @@
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, Market data farm connection is OK:usfarm.nj (DEBUG)
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, Market data farm connection is OK:cashfarm (DEBUG)
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, Market data farm connection is OK:usfarm (DEBUG)
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, HMDS data farm connection is OK:euhmds (DEBUG)
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, HMDS data farm connection is OK:cashhmds (DEBUG)
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, HMDS data farm connection is OK:fundfarm (DEBUG)
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, HMDS data farm connection is OK:ushmds (DEBUG)
-06/03/2022 08:40:06 PM - reqId: -1, Connection Success, Sec-def data farm connection is OK:secdefil (DEBUG)
-06/03/2022 08:40:07 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'STNE', 'SOPA', 'DRCT', 'CNEY', 'MULN', 'BIOT', 'CHGG', 'APLT', 'SEV', 'TGTX', 'MRTX', 'PAGS', 'UVIX', 'BERZ', 'CRIS', 'RDBX', 'LEXX'] (DEBUG)
-06/03/2022 08:40:07 PM - Retrieve previous close for tickers: ['APLT', 'PAGS', 'MULN', 'DRCT', 'CHGG', 'STNE', 'SEV', 'BIOT', 'EFOI', 'AMLX', 'CRIS', 'MRTX', 'UVIX', 'LEXX', 'SOPA', 'BERZ', 'MGLD', 'BTMD', 'YMTX', 'CNEY', 'RDBX', 'TGTX', 'OKTA', 'SRLP', 'TPTX'] (DEBUG)
-06/03/2022 08:40:12 PM - --- Total snapshots retrieval time from yfinance: 4.329235792160034 seconds --- (DEBUG)
-06/03/2022 08:40:12 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000'} (DEBUG)
-06/03/2022 08:40:16 PM - Initial pop up analyse time: 0.039589643478393555 (DEBUG)
-06/03/2022 08:40:16 PM - MGLD ramp up 2.16% above 50MA volume, Time: 08:39, 50MA volume: 10861.1, Volume: 45626.00, Volume ratio: 4.2, Close: $1.89 (DEBUG)
-06/03/2022 08:40:24 PM - Unusual volume analyse time: 7.793785095214844 (DEBUG)
-06/03/2022 08:40:24 PM - --- Total historical data retrieval and analysis time: 16.177541971206665 seconds --- (DEBUG)
-06/03/2022 08:40:37 PM - Scanner refresh interval time: 29.826309204101562 seconds (DEBUG)
-06/03/2022 08:40:37 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'STNE', 'SOPA', 'DRCT', 'CNEY', 'MULN', 'BIOT', 'CHGG', 'APLT', 'SEV', 'TGTX', 'MRTX', 'PAGS', 'UVIX', 'BERZ', 'CRIS', 'RDBX', 'LEXX'] (DEBUG)
-06/03/2022 08:40:40 PM - Initial pop up analyse time: 0.03589582443237305 (DEBUG)
-06/03/2022 08:40:40 PM - MGLD ramp up 2.16% above 50MA volume, Time: 08:39, 50MA volume: 10861.1, Volume: 45626.00, Volume ratio: 4.2, Close: $1.89 (DEBUG)
-06/03/2022 08:40:48 PM - Unusual volume analyse time: 7.543833255767822 (DEBUG)
-06/03/2022 08:40:48 PM - --- Total historical data retrieval and analysis time: 10.55968689918518 seconds --- (DEBUG)
-06/03/2022 08:41:10 PM - Scanner refresh interval time: 32.566004037857056 seconds (DEBUG)
-06/03/2022 08:41:10 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'STNE', 'SOPA', 'DRCT', 'CNEY', 'MULN', 'BIOT', 'CHGG', 'APLT', 'SEV', 'TGTX', 'MRTX', 'PAGS', 'UVIX', 'BERZ', 'CRIS', 'RDBX', 'LEXX'] (DEBUG)
-06/03/2022 08:41:13 PM - SOPA is popping up 15.79%, Time: 08:40, Close: $2.42, Change: 4.31%, Volume: 75456.00 (DEBUG)
-06/03/2022 08:41:18 PM - Initial pop up analyse time: 4.7123143672943115 (DEBUG)
-06/03/2022 08:41:18 PM - SOPA ramp up 4.31% above 50MA volume, Time: 08:40, 50MA volume: 43487.53658536585, Volume: 75456.00, Volume ratio: 1.7, Close: $2.42 (DEBUG)
-06/03/2022 08:41:25 PM - Unusual volume analyse time: 7.337095260620117 (DEBUG)
-06/03/2022 08:41:25 PM - --- Total historical data retrieval and analysis time: 15.37769341468811 seconds --- (DEBUG)
-06/03/2022 08:41:40 PM - Scanner refresh interval time: 30.626282691955566 seconds (DEBUG)
-06/03/2022 08:41:40 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'EFOI', 'MGLD', 'AMLX', 'SRLP', 'YMTX', 'SOPA', 'OKTA', 'BTMD', 'STNE', 'DRCT', 'CNEY', 'MULN', 'BIOT', 'CHGG', 'APLT', 'SEV', 'TGTX', 'MRTX', 'RDBX', 'BERZ', 'PAGS', 'UVIX', 'CRIS', 'SOXS'] (DEBUG)
-06/03/2022 08:41:40 PM - Retrieve previous close for tickers: ['SOXS'] (DEBUG)
-06/03/2022 08:41:41 PM - --- Total snapshots retrieval time from yfinance: 0.7280762195587158 seconds --- (DEBUG)
-06/03/2022 08:41:41 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10'} (DEBUG)
-06/03/2022 08:41:44 PM - SOPA is popping up 15.79%, Time: 08:40, Close: $2.42, Change: 4.31%, Volume: 75456.00 (DEBUG)
-06/03/2022 08:41:49 PM - Initial pop up analyse time: 4.570415258407593 (DEBUG)
-06/03/2022 08:41:49 PM - SOPA ramp up 4.31% above 50MA volume, Time: 08:40, 50MA volume: 43487.53658536585, Volume: 75456.00, Volume ratio: 1.7, Close: $2.42 (DEBUG)
-06/03/2022 08:41:56 PM - Unusual volume analyse time: 7.322315454483032 (DEBUG)
-06/03/2022 08:41:56 PM - --- Total historical data retrieval and analysis time: 15.64723539352417 seconds --- (DEBUG)
-06/03/2022 08:42:08 PM - Scanner refresh interval time: 27.97081685066223 seconds (DEBUG)
-06/03/2022 08:42:08 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'EFOI', 'MGLD', 'AMLX', 'SRLP', 'YMTX', 'SOPA', 'OKTA', 'BTMD', 'STNE', 'DRCT', 'CNEY', 'MULN', 'BIOT', 'CHGG', 'APLT', 'SEV', 'TGTX', 'MRTX', 'RDBX', 'BERZ', 'PAGS', 'UVIX', 'CRIS', 'SOXS'] (DEBUG)
-06/03/2022 08:42:11 PM - Initial pop up analyse time: 0.05086374282836914 (DEBUG)
-06/03/2022 08:42:12 PM - Unusual volume analyse time: 0.060830116271972656 (DEBUG)
-06/03/2022 08:42:12 PM - --- Total historical data retrieval and analysis time: 3.155524253845215 seconds --- (DEBUG)
-06/03/2022 08:42:43 PM - Scanner refresh interval time: 34.852895975112915 seconds (DEBUG)
-06/03/2022 08:42:43 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'BTMD', 'OKTA', 'SOPA', 'STNE', 'DRCT', 'CNEY', 'MULN', 'BIOT', 'CHGG', 'APLT', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'SOXS', 'RDBX', 'CRIS', 'LEXX', 'UVIX'] (DEBUG)
-06/03/2022 08:42:46 PM - Initial pop up analyse time: 0.04188799858093262 (DEBUG)
-06/03/2022 08:42:46 PM - Unusual volume analyse time: 0.06086468696594238 (DEBUG)
-06/03/2022 08:42:46 PM - --- Total historical data retrieval and analysis time: 3.1573214530944824 seconds --- (DEBUG)
-06/03/2022 08:43:16 PM - Scanner refresh interval time: 32.56788349151611 seconds (DEBUG)
-06/03/2022 08:43:16 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'SOPA', 'BTMD', 'OKTA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'CHGG', 'APLT', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'SOXS', 'CRIS', 'LEXX', 'RDBX', 'UVIX', 'DTC'] (DEBUG)
-06/03/2022 08:43:16 PM - Retrieve previous close for tickers: ['DTC'] (DEBUG)
-06/03/2022 08:43:17 PM - --- Total snapshots retrieval time from yfinance: 0.8055546283721924 seconds --- (DEBUG)
-06/03/2022 08:43:17 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53'} (DEBUG)
-06/03/2022 08:43:20 PM - Initial pop up analyse time: 0.0359041690826416 (DEBUG)
-06/03/2022 08:43:20 PM - MGLD ramp up 2.69% above 20MA volume, Time: 08:42, 20MA volume: 8643.05, Volume: 10800, Volume ratio: 1.2, Close: $1.91 (DEBUG)
-06/03/2022 08:43:27 PM - Unusual volume analyse time: 7.498159646987915 (DEBUG)
-06/03/2022 08:43:27 PM - --- Total historical data retrieval and analysis time: 11.513948202133179 seconds --- (DEBUG)
-06/03/2022 08:43:46 PM - Scanner refresh interval time: 30.536572217941284 seconds (DEBUG)
-06/03/2022 08:43:46 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'BTMD', 'OKTA', 'SOPA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'CHGG', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'SOXS', 'CRIS', 'LEXX', 'RDBX', 'DTC', 'SQQQ'] (DEBUG)
-06/03/2022 08:43:46 PM - Retrieve previous close for tickers: ['SQQQ'] (DEBUG)
-06/03/2022 08:43:47 PM - --- Total snapshots retrieval time from yfinance: 0.7436790466308594 seconds --- (DEBUG)
-06/03/2022 08:43:47 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50'} (DEBUG)
-06/03/2022 08:43:50 PM - Initial pop up analyse time: 0.038858890533447266 (DEBUG)
-06/03/2022 08:43:50 PM - MGLD ramp up 2.69% above 20MA volume, Time: 08:42, 20MA volume: 8643.05, Volume: 10800, Volume ratio: 1.2, Close: $1.91 (DEBUG)
-06/03/2022 08:43:58 PM - Unusual volume analyse time: 7.475573539733887 (DEBUG)
-06/03/2022 08:43:58 PM - --- Total historical data retrieval and analysis time: 11.4050612449646 seconds --- (DEBUG)
-06/03/2022 08:44:13 PM - Scanner refresh interval time: 26.471874952316284 seconds (DEBUG)
-06/03/2022 08:44:13 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'BTMD', 'OKTA', 'SOPA', 'STNE', 'CNEY', 'MULN', 'APLT', 'BIOT', 'CHGG', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'SOXS', 'CRIS', 'LEXX', 'DTC', 'FNGD', 'CVM'] (DEBUG)
-06/03/2022 08:44:13 PM - Retrieve previous close for tickers: ['FNGD', 'CVM'] (DEBUG)
-06/03/2022 08:44:14 PM - --- Total snapshots retrieval time from yfinance: 0.8314793109893799 seconds --- (DEBUG)
-06/03/2022 08:44:14 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200'} (DEBUG)
-06/03/2022 08:44:17 PM - Initial pop up analyse time: 0.051860809326171875 (DEBUG)
-06/03/2022 08:44:17 PM - Unusual volume analyse time: 0.0608370304107666 (DEBUG)
-06/03/2022 08:44:17 PM - --- Total historical data retrieval and analysis time: 4.633894443511963 seconds --- (DEBUG)
-06/03/2022 08:44:43 PM - Scanner refresh interval time: 29.98264741897583 seconds (DEBUG)
-06/03/2022 08:44:43 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'APLT', 'MULN', 'BIOT', 'CHGG', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'FNGD', 'SOXS', 'CRIS', 'LEXX', 'DTC', 'UVIX'] (DEBUG)
-06/03/2022 08:44:46 PM - Initial pop up analyse time: 0.03886890411376953 (DEBUG)
-06/03/2022 08:44:46 PM - Unusual volume analyse time: 0.07280588150024414 (DEBUG)
-06/03/2022 08:44:46 PM - --- Total historical data retrieval and analysis time: 3.306838274002075 seconds --- (DEBUG)
-06/03/2022 08:45:13 PM - Scanner refresh interval time: 30.556813955307007 seconds (DEBUG)
-06/03/2022 08:45:13 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'FNGD', 'SOXS', 'CRIS', 'LEXX', 'DTC'] (DEBUG)
-06/03/2022 08:45:16 PM - Initial pop up analyse time: 0.03690052032470703 (DEBUG)
-06/03/2022 08:45:16 PM - Unusual volume analyse time: 0.05686783790588379 (DEBUG)
-06/03/2022 08:45:16 PM - --- Total historical data retrieval and analysis time: 3.1677844524383545 seconds --- (DEBUG)
-06/03/2022 08:45:46 PM - Scanner refresh interval time: 32.78659200668335 seconds (DEBUG)
-06/03/2022 08:45:46 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'FNGD', 'SOXS', 'CRIS', 'LEXX', 'DTC'] (DEBUG)
-06/03/2022 08:45:49 PM - Initial pop up analyse time: 0.04288339614868164 (DEBUG)
-06/03/2022 08:45:49 PM - Unusual volume analyse time: 0.06781888008117676 (DEBUG)
-06/03/2022 08:45:49 PM - --- Total historical data retrieval and analysis time: 3.119964361190796 seconds --- (DEBUG)
-06/03/2022 08:46:14 PM - Scanner refresh interval time: 28.31299090385437 seconds (DEBUG)
-06/03/2022 08:46:14 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'EFOI', 'AMLX', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'FNGD', 'SOXS', 'CRIS', 'LEXX', 'DTC'] (DEBUG)
-06/03/2022 08:46:18 PM - Initial pop up analyse time: 0.0369420051574707 (DEBUG)
-06/03/2022 08:46:18 PM - Unusual volume analyse time: 0.06034040451049805 (DEBUG)
-06/03/2022 08:46:18 PM - --- Total historical data retrieval and analysis time: 3.2525742053985596 seconds --- (DEBUG)
-06/03/2022 08:46:41 PM - Scanner refresh interval time: 26.329447507858276 seconds (DEBUG)
-06/03/2022 08:46:41 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'AMLX', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'SEV', 'TGTX', 'MRTX', 'BERZ', 'FNGD', 'CRIS', 'LEXX', 'DTC', 'UVIX'] (DEBUG)
-06/03/2022 08:46:44 PM - Initial pop up analyse time: 0.040456295013427734 (DEBUG)
-06/03/2022 08:46:44 PM - Unusual volume analyse time: 0.05883336067199707 (DEBUG)
-06/03/2022 08:46:44 PM - --- Total historical data retrieval and analysis time: 3.198225259780884 seconds --- (DEBUG)
-06/03/2022 08:47:11 PM - Scanner refresh interval time: 30.438450813293457 seconds (DEBUG)
-06/03/2022 08:47:11 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'AMLX', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'DTC', 'UVIX', 'FNGD', 'TECS'] (DEBUG)
-06/03/2022 08:47:11 PM - Retrieve previous close for tickers: ['TECS'] (DEBUG)
-06/03/2022 08:47:12 PM - --- Total snapshots retrieval time from yfinance: 1.010209321975708 seconds --- (DEBUG)
-06/03/2022 08:47:12 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24'} (DEBUG)
-06/03/2022 08:47:15 PM - Initial pop up analyse time: 0.039605140686035156 (DEBUG)
-06/03/2022 08:47:15 PM - Unusual volume analyse time: 0.06183457374572754 (DEBUG)
-06/03/2022 08:47:15 PM - --- Total historical data retrieval and analysis time: 4.231314420700073 seconds --- (DEBUG)
-06/03/2022 08:47:44 PM - Scanner refresh interval time: 32.76644706726074 seconds (DEBUG)
-06/03/2022 08:47:44 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'AMLX', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'DTC', 'FNGD', 'SOXS'] (DEBUG)
-06/03/2022 08:47:47 PM - Initial pop up analyse time: 0.03889608383178711 (DEBUG)
-06/03/2022 08:47:47 PM - Unusual volume analyse time: 0.05936574935913086 (DEBUG)
-06/03/2022 08:47:47 PM - --- Total historical data retrieval and analysis time: 3.2910938262939453 seconds --- (DEBUG)
-06/03/2022 08:48:12 PM - Scanner refresh interval time: 28.043578624725342 seconds (DEBUG)
-06/03/2022 08:48:12 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'AMLX', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'DTC', 'FNGD', 'UVIX'] (DEBUG)
-06/03/2022 08:48:15 PM - Initial pop up analyse time: 0.03486299514770508 (DEBUG)
-06/03/2022 08:48:15 PM - AMLX ramp up 1.3% above 50MA volume, Time: 08:48, 50MA volume: 6665.74, Volume: 12487.00, Volume ratio: 1.9, Close: $12.44 (DEBUG)
-06/03/2022 08:48:22 PM - Unusual volume analyse time: 7.114652872085571 (DEBUG)
-06/03/2022 08:48:22 PM - --- Total historical data retrieval and analysis time: 10.152023315429688 seconds --- (DEBUG)
-06/03/2022 08:48:42 PM - Scanner refresh interval time: 30.46235489845276 seconds (DEBUG)
-06/03/2022 08:48:42 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'MGLD', 'AMLX', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'DTC', 'FNGD', 'UVIX'] (DEBUG)
-06/03/2022 08:48:46 PM - Initial pop up analyse time: 0.0359039306640625 (DEBUG)
-06/03/2022 08:48:46 PM - AMLX ramp up 3.75% above 50MA volume, Time: 08:48, 50MA volume: 7459.24, Volume: 52162.00, Volume ratio: 7.0, Close: $12.74 (DEBUG)
-06/03/2022 08:48:53 PM - Unusual volume analyse time: 7.887001276016235 (DEBUG)
-06/03/2022 08:48:53 PM - --- Total historical data retrieval and analysis time: 10.937217473983765 seconds --- (DEBUG)
-06/03/2022 08:49:11 PM - Scanner refresh interval time: 28.361381769180298 seconds (DEBUG)
-06/03/2022 08:49:11 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'SRLP', 'EFOI', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'DTC', 'UVIX', 'SOXS'] (DEBUG)
-06/03/2022 08:49:14 PM - Initial pop up analyse time: 0.0359044075012207 (DEBUG)
-06/03/2022 08:49:14 PM - AMLX ramp up 3.5% above 50MA volume, Time: 08:48, 50MA volume: 7909.9, Volume: 74695.00, Volume ratio: 9.4, Close: $12.71 (DEBUG)
-06/03/2022 08:49:22 PM - Unusual volume analyse time: 7.334335565567017 (DEBUG)
-06/03/2022 08:49:22 PM - --- Total historical data retrieval and analysis time: 10.727794170379639 seconds --- (DEBUG)
-06/03/2022 08:49:46 PM - Scanner refresh interval time: 34.89946985244751 seconds (DEBUG)
-06/03/2022 08:49:46 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'SRLP', 'EFOI', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'DTC', 'UVIX', 'SOXS'] (DEBUG)
-06/03/2022 08:49:49 PM - Initial pop up analyse time: 0.03989362716674805 (DEBUG)
-06/03/2022 08:49:49 PM - AMLX ramp up 3.5% above 50MA volume, Time: 08:48, 50MA volume: 7909.9, Volume: 74695.00, Volume ratio: 9.4, Close: $12.71 (DEBUG)
-06/03/2022 08:49:56 PM - Unusual volume analyse time: 7.308447599411011 (DEBUG)
-06/03/2022 08:49:56 PM - --- Total historical data retrieval and analysis time: 10.490551233291626 seconds --- (DEBUG)
-06/03/2022 08:50:21 PM - Scanner refresh interval time: 34.800411224365234 seconds (DEBUG)
-06/03/2022 08:50:21 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'SRLP', 'EFOI', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'DTC', 'UVIX', 'SOXS'] (DEBUG)
-06/03/2022 08:50:24 PM - Initial pop up analyse time: 0.04290652275085449 (DEBUG)
-06/03/2022 08:50:24 PM - Unusual volume analyse time: 0.06878924369812012 (DEBUG)
-06/03/2022 08:50:24 PM - --- Total historical data retrieval and analysis time: 3.2531049251556396 seconds --- (DEBUG)
-06/03/2022 08:50:56 PM - Scanner refresh interval time: 35.221323013305664 seconds (DEBUG)
-06/03/2022 08:50:56 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'MULN', 'CRIS', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'LEXX', 'TECS', 'SOXS', 'DTC', 'SQQQ'] (DEBUG)
-06/03/2022 08:50:59 PM - Initial pop up analyse time: 0.03594374656677246 (DEBUG)
-06/03/2022 08:50:59 PM - Unusual volume analyse time: 0.05780982971191406 (DEBUG)
-06/03/2022 08:50:59 PM - --- Total historical data retrieval and analysis time: 3.1464040279388428 seconds --- (DEBUG)
-06/03/2022 08:51:26 PM - Scanner refresh interval time: 30.4074068069458 seconds (DEBUG)
-06/03/2022 08:51:26 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'SOXS', 'DTC', 'TNXP'] (DEBUG)
-06/03/2022 08:51:26 PM - Retrieve previous close for tickers: ['TNXP'] (DEBUG)
-06/03/2022 08:51:27 PM - --- Total snapshots retrieval time from yfinance: 0.7093644142150879 seconds --- (DEBUG)
-06/03/2022 08:51:27 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000'} (DEBUG)
-06/03/2022 08:51:31 PM - Initial pop up analyse time: 0.04090595245361328 (DEBUG)
-06/03/2022 08:51:31 PM - MGLD ramp up 1.62% above 50MA volume, Time: 08:51, 50MA volume: 8068.22, Volume: 8564.00, Volume ratio: 1.1, Close: $1.88 (DEBUG)
-06/03/2022 08:51:38 PM - Unusual volume analyse time: 7.4026336669921875 (DEBUG)
-06/03/2022 08:51:38 PM - --- Total historical data retrieval and analysis time: 11.825655221939087 seconds --- (DEBUG)
-06/03/2022 08:51:59 PM - Scanner refresh interval time: 32.66899108886719 seconds (DEBUG)
-06/03/2022 08:51:59 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'SOXS', 'DTC', 'TNXP'] (DEBUG)
-06/03/2022 08:52:02 PM - Initial pop up analyse time: 0.043883323669433594 (DEBUG)
-06/03/2022 08:52:02 PM - MGLD ramp up 2.16% above 50MA volume, Time: 08:51, 50MA volume: 8094.48, Volume: 9877.00, Volume ratio: 1.2, Close: $1.89 (DEBUG)
-06/03/2022 08:52:10 PM - Unusual volume analyse time: 7.450686931610107 (DEBUG)
-06/03/2022 08:52:10 PM - --- Total historical data retrieval and analysis time: 10.91912293434143 seconds --- (DEBUG)
-06/03/2022 08:52:31 PM - Scanner refresh interval time: 32.62440800666809 seconds (DEBUG)
-06/03/2022 08:52:31 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'SOXS', 'DTC', 'TNXP'] (DEBUG)
-06/03/2022 08:52:35 PM - Initial pop up analyse time: 0.04886960983276367 (DEBUG)
-06/03/2022 08:52:35 PM - MGLD ramp up 2.16% above 50MA volume, Time: 08:51, 50MA volume: 8094.48, Volume: 9877.00, Volume ratio: 1.2, Close: $1.89 (DEBUG)
-06/03/2022 08:52:42 PM - Unusual volume analyse time: 7.457599639892578 (DEBUG)
-06/03/2022 08:52:42 PM - --- Total historical data retrieval and analysis time: 10.90478229522705 seconds --- (DEBUG)
-06/03/2022 08:53:04 PM - Scanner refresh interval time: 32.874760150909424 seconds (DEBUG)
-06/03/2022 08:53:04 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'SOXS', 'DTC', 'TNXP'] (DEBUG)
-06/03/2022 08:53:07 PM - Initial pop up analyse time: 0.03989362716674805 (DEBUG)
-06/03/2022 08:53:08 PM - Unusual volume analyse time: 0.05885028839111328 (DEBUG)
-06/03/2022 08:53:08 PM - --- Total historical data retrieval and analysis time: 3.1735260486602783 seconds --- (DEBUG)
-06/03/2022 08:53:31 PM - Scanner refresh interval time: 26.237974405288696 seconds (DEBUG)
-06/03/2022 08:53:31 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'TGTX', 'MRTX', 'BERZ', 'CRIS', 'LEXX', 'TECS', 'SOXS', 'DTC', 'TNXP'] (DEBUG)
-06/03/2022 08:53:34 PM - Initial pop up analyse time: 0.07232117652893066 (DEBUG)
-06/03/2022 08:53:34 PM - Unusual volume analyse time: 0.12267088890075684 (DEBUG)
-06/03/2022 08:53:34 PM - --- Total historical data retrieval and analysis time: 3.592649459838867 seconds --- (DEBUG)
-06/03/2022 08:53:59 PM - Scanner refresh interval time: 28.69836664199829 seconds (DEBUG)
-06/03/2022 08:53:59 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'MRTX', 'BERZ', 'TECS', 'CRIS', 'SOXS', 'LEXX', 'DTC', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:54:03 PM - Initial pop up analyse time: 0.053856611251831055 (DEBUG)
-06/03/2022 08:54:03 PM - Unusual volume analyse time: 0.07280659675598145 (DEBUG)
-06/03/2022 08:54:03 PM - --- Total historical data retrieval and analysis time: 3.8198328018188477 seconds --- (DEBUG)
-06/03/2022 08:54:30 PM - Scanner refresh interval time: 30.37244200706482 seconds (DEBUG)
-06/03/2022 08:54:30 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'MRTX', 'BERZ', 'TECS', 'CRIS', 'SOXS', 'LEXX', 'DTC', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:54:34 PM - Initial pop up analyse time: 0.04787182807922363 (DEBUG)
-06/03/2022 08:54:34 PM - Unusual volume analyse time: 0.12366914749145508 (DEBUG)
-06/03/2022 08:54:34 PM - --- Total historical data retrieval and analysis time: 4.353323936462402 seconds --- (DEBUG)
-06/03/2022 08:54:56 PM - Scanner refresh interval time: 26.26652240753174 seconds (DEBUG)
-06/03/2022 08:54:56 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'MRTX', 'BERZ', 'TECS', 'CRIS', 'SOXS', 'LEXX', 'DTC', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:54:59 PM - Initial pop up analyse time: 0.042885541915893555 (DEBUG)
-06/03/2022 08:54:59 PM - Unusual volume analyse time: 0.06922149658203125 (DEBUG)
-06/03/2022 08:54:59 PM - --- Total historical data retrieval and analysis time: 3.2487001419067383 seconds --- (DEBUG)
-06/03/2022 08:55:27 PM - Scanner refresh interval time: 30.699462175369263 seconds (DEBUG)
-06/03/2022 08:55:27 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'BERZ', 'MRTX', 'CRIS', 'FNGD', 'LEXX', 'TECS', 'DTC', 'RETA', 'TGTX'] (DEBUG)
-06/03/2022 08:55:27 PM - Retrieve previous close for tickers: ['RETA'] (DEBUG)
-06/03/2022 08:55:27 PM - --- Total snapshots retrieval time from yfinance: 0.8011784553527832 seconds --- (DEBUG)
-06/03/2022 08:55:27 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59'} (DEBUG)
-06/03/2022 08:55:31 PM - Initial pop up analyse time: 0.03984785079956055 (DEBUG)
-06/03/2022 08:55:31 PM - AMLX ramp up 3.03% above 50MA volume, Time: 08:55, 50MA volume: 11904.72, Volume: 94090.0, Volume ratio: 7.9, Close: $13.26 (DEBUG)
-06/03/2022 08:55:38 PM - Unusual volume analyse time: 7.740057706832886 (DEBUG)
-06/03/2022 08:55:38 PM - --- Total historical data retrieval and analysis time: 11.671180963516235 seconds --- (DEBUG)
-06/03/2022 08:56:02 PM - Scanner refresh interval time: 34.90908932685852 seconds (DEBUG)
-06/03/2022 08:56:02 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'BERZ', 'MRTX', 'FNGD', 'LEXX', 'TECS', 'DTC', 'SOXS', 'RETA'] (DEBUG)
-06/03/2022 08:56:05 PM - Initial pop up analyse time: 0.0384061336517334 (DEBUG)
-06/03/2022 08:56:05 PM - AMLX ramp up 2.72% above 50MA volume, Time: 08:55, 50MA volume: 14159.24, Volume: 206816.00, Volume ratio: 14.6, Close: $13.22 (DEBUG)
-06/03/2022 08:56:13 PM - Unusual volume analyse time: 7.859318017959595 (DEBUG)
-06/03/2022 08:56:13 PM - --- Total historical data retrieval and analysis time: 10.986296892166138 seconds --- (DEBUG)
-06/03/2022 08:56:36 PM - Scanner refresh interval time: 34.93079161643982 seconds (DEBUG)
-06/03/2022 08:56:36 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'SOPA', 'BTMD', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'PAGS', 'CHGG', 'BERZ', 'MRTX', 'FNGD', 'LEXX', 'TECS', 'DTC', 'SOXS', 'RETA'] (DEBUG)
-06/03/2022 08:56:40 PM - Initial pop up analyse time: 0.05185961723327637 (DEBUG)
-06/03/2022 08:56:40 PM - AMLX ramp up 2.72% above 50MA volume, Time: 08:55, 50MA volume: 14159.24, Volume: 206816.00, Volume ratio: 14.6, Close: $13.22 (DEBUG)
-06/03/2022 08:56:48 PM - Unusual volume analyse time: 7.871976613998413 (DEBUG)
-06/03/2022 08:56:48 PM - --- Total historical data retrieval and analysis time: 11.134528875350952 seconds --- (DEBUG)
-06/03/2022 08:57:12 PM - Scanner refresh interval time: 35.221691370010376 seconds (DEBUG)
-06/03/2022 08:57:12 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'CHGG', 'PAGS', 'BERZ', 'MRTX', 'SOXS', 'LEXX', 'TECS', 'RETA', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:57:15 PM - Initial pop up analyse time: 0.03789877891540527 (DEBUG)
-06/03/2022 08:57:15 PM - Unusual volume analyse time: 0.060837507247924805 (DEBUG)
-06/03/2022 08:57:15 PM - --- Total historical data retrieval and analysis time: 3.197556734085083 seconds --- (DEBUG)
-06/03/2022 08:57:38 PM - Scanner refresh interval time: 26.516447067260742 seconds (DEBUG)
-06/03/2022 08:57:38 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'CHGG', 'PAGS', 'BERZ', 'MRTX', 'SOXS', 'LEXX', 'TECS', 'RETA', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:57:41 PM - Initial pop up analyse time: 0.038922786712646484 (DEBUG)
-06/03/2022 08:57:41 PM - Unusual volume analyse time: 0.059813499450683594 (DEBUG)
-06/03/2022 08:57:41 PM - --- Total historical data retrieval and analysis time: 3.2143332958221436 seconds --- (DEBUG)
-06/03/2022 08:58:11 PM - Scanner refresh interval time: 33.12180995941162 seconds (DEBUG)
-06/03/2022 08:58:11 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'CHGG', 'PAGS', 'BERZ', 'MRTX', 'SOXS', 'LEXX', 'TECS', 'RETA', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:58:15 PM - Initial pop up analyse time: 0.0498661994934082 (DEBUG)
-06/03/2022 08:58:15 PM - Unusual volume analyse time: 0.0608370304107666 (DEBUG)
-06/03/2022 08:58:15 PM - --- Total historical data retrieval and analysis time: 3.282214879989624 seconds --- (DEBUG)
-06/03/2022 08:58:46 PM - Scanner refresh interval time: 35.174540758132935 seconds (DEBUG)
-06/03/2022 08:58:46 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'CHGG', 'PAGS', 'BERZ', 'MRTX', 'SOXS', 'LEXX', 'TECS', 'RETA', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:58:50 PM - Initial pop up analyse time: 0.1551055908203125 (DEBUG)
-06/03/2022 08:58:50 PM - Unusual volume analyse time: 0.10415315628051758 (DEBUG)
-06/03/2022 08:58:50 PM - --- Total historical data retrieval and analysis time: 3.5240585803985596 seconds --- (DEBUG)
-06/03/2022 08:59:17 PM - Scanner refresh interval time: 30.90561294555664 seconds (DEBUG)
-06/03/2022 08:59:17 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'CHGG', 'PAGS', 'BERZ', 'MRTX', 'SOXS', 'LEXX', 'TECS', 'RETA', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:59:21 PM - Initial pop up analyse time: 0.04387521743774414 (DEBUG)
-06/03/2022 08:59:22 PM - Unusual volume analyse time: 0.057845354080200195 (DEBUG)
-06/03/2022 08:59:22 PM - --- Total historical data retrieval and analysis time: 4.120224952697754 seconds --- (DEBUG)
-06/03/2022 08:59:46 PM - Scanner refresh interval time: 28.694302320480347 seconds (DEBUG)
-06/03/2022 08:59:46 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'CNEY', 'CRIS', 'MULN', 'BIOT', 'APLT', 'CHGG', 'PAGS', 'BERZ', 'MRTX', 'SOXS', 'LEXX', 'TECS', 'RETA', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 08:59:50 PM - Initial pop up analyse time: 0.03789854049682617 (DEBUG)
-06/03/2022 08:59:50 PM - AMLX ramp up 2.55% above 50MA volume, Time: 08:59, 50MA volume: 24464.78, Volume: 241879.00, Volume ratio: 9.9, Close: $13.65 (DEBUG)
-06/03/2022 08:59:57 PM - Unusual volume analyse time: 7.688004016876221 (DEBUG)
-06/03/2022 08:59:57 PM - --- Total historical data retrieval and analysis time: 11.198360443115234 seconds --- (DEBUG)
-06/03/2022 09:00:15 PM - Scanner refresh interval time: 28.785913944244385 seconds (DEBUG)
-06/03/2022 09:00:15 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'BTMD', 'OKTA', 'SOPA', 'STNE', 'CRIS', 'APLT', 'MULN', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'CHGG', 'MRTX', 'RETA', 'SOXS', 'TECS', 'TGTX', 'FNGD', 'DTC'] (DEBUG)
-06/03/2022 09:00:18 PM - Initial pop up analyse time: 0.04487729072570801 (DEBUG)
-06/03/2022 09:00:18 PM - AMLX ramp up 1.97% above 50MA volume, Time: 09:00, 50MA volume: 27488.98, Volume: 122210.0, Volume ratio: 4.4, Close: $13.96 (DEBUG)
-06/03/2022 09:00:26 PM - Unusual volume analyse time: 7.494431972503662 (DEBUG)
-06/03/2022 09:00:26 PM - --- Total historical data retrieval and analysis time: 10.782407999038696 seconds --- (DEBUG)
-06/03/2022 09:00:48 PM - Scanner refresh interval time: 33.0961971282959 seconds (DEBUG)
-06/03/2022 09:00:48 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'BTMD', 'OKTA', 'SOPA', 'STNE', 'CRIS', 'APLT', 'MULN', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'CHGG', 'MRTX', 'RETA', 'SOXS', 'TECS', 'TGTX', 'FNGD', 'DTC'] (DEBUG)
-06/03/2022 09:00:51 PM - Initial pop up analyse time: 0.03893876075744629 (DEBUG)
-06/03/2022 09:00:51 PM - AMLX ramp up 1.39% above 50MA volume, Time: 09:00, 50MA volume: 29278.78, Volume: 211700, Volume ratio: 7.2, Close: $13.88 (DEBUG)
-06/03/2022 09:00:59 PM - Unusual volume analyse time: 7.374898433685303 (DEBUG)
-06/03/2022 09:00:59 PM - --- Total historical data retrieval and analysis time: 10.610556602478027 seconds --- (DEBUG)
-06/03/2022 09:01:21 PM - Scanner refresh interval time: 33.22468066215515 seconds (DEBUG)
-06/03/2022 09:01:21 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'BTMD', 'OKTA', 'SOPA', 'STNE', 'CRIS', 'MULN', 'APLT', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'TOMZ', 'RETA', 'SOXS', 'TECS', 'TGTX', 'FNGD'] (DEBUG)
-06/03/2022 09:01:21 PM - Retrieve previous close for tickers: ['TOMZ'] (DEBUG)
-06/03/2022 09:01:22 PM - --- Total snapshots retrieval time from yfinance: 0.8827974796295166 seconds --- (DEBUG)
-06/03/2022 09:01:22 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59', 'TOMZ': '1.0000'} (DEBUG)
-06/03/2022 09:01:25 PM - TOMZ is popping up 5.0%, Time: 09:00, Close: $1.05, Change: 9.36%, Volume: 56234.00 (DEBUG)
-06/03/2022 09:01:30 PM - Initial pop up analyse time: 4.3682541847229 (DEBUG)
-06/03/2022 09:01:30 PM - AMLX ramp up 1.75% above 50MA volume, Time: 09:00, 50MA volume: 30225.08, Volume: 259015.00, Volume ratio: 8.6, Close: $13.93 (DEBUG)
-06/03/2022 09:01:37 PM - Unusual volume analyse time: 7.482004880905151 (DEBUG)
-06/03/2022 09:01:37 PM - --- Total historical data retrieval and analysis time: 15.884453296661377 seconds --- (DEBUG)
-06/03/2022 09:01:52 PM - Scanner refresh interval time: 30.874801874160767 seconds (DEBUG)
-06/03/2022 09:01:52 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'APLT', 'MULN', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TECS', 'TGTX', 'FNGD', 'DTC'] (DEBUG)
-06/03/2022 09:01:56 PM - Initial pop up analyse time: 0.05585289001464844 (DEBUG)
-06/03/2022 09:01:56 PM - AMLX ramp up 1.75% above 50MA volume, Time: 09:00, 50MA volume: 30225.08, Volume: 259015.00, Volume ratio: 8.6, Close: $13.93 (DEBUG)
-06/03/2022 09:02:03 PM - Unusual volume analyse time: 7.522519588470459 (DEBUG)
-06/03/2022 09:02:03 PM - --- Total historical data retrieval and analysis time: 11.172616004943848 seconds --- (DEBUG)
-06/03/2022 09:02:27 PM - Scanner refresh interval time: 35.436025857925415 seconds (DEBUG)
-06/03/2022 09:02:28 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'MULN', 'APLT', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TECS', 'TGTX', 'DTC', 'PHAS'] (DEBUG)
-06/03/2022 09:02:28 PM - Retrieve previous close for tickers: ['PHAS'] (DEBUG)
-06/03/2022 09:02:28 PM - --- Total snapshots retrieval time from yfinance: 0.97330641746521 seconds --- (DEBUG)
-06/03/2022 09:02:28 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59', 'TOMZ': '1.0000', 'PHAS': '0.7678'} (DEBUG)
-06/03/2022 09:02:32 PM - Initial pop up analyse time: 0.03989744186401367 (DEBUG)
-06/03/2022 09:02:32 PM - Unusual volume analyse time: 0.05983400344848633 (DEBUG)
-06/03/2022 09:02:32 PM - --- Total historical data retrieval and analysis time: 4.4966418743133545 seconds --- (DEBUG)
-06/03/2022 09:02:58 PM - Scanner refresh interval time: 30.65150237083435 seconds (DEBUG)
-06/03/2022 09:02:58 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'MULN', 'APLT', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TECS', 'TGTX', 'DTC', 'PHAS'] (DEBUG)
-06/03/2022 09:03:01 PM - Initial pop up analyse time: 0.04683423042297363 (DEBUG)
-06/03/2022 09:03:01 PM - Unusual volume analyse time: 0.06781768798828125 (DEBUG)
-06/03/2022 09:03:01 PM - --- Total historical data retrieval and analysis time: 3.183743715286255 seconds --- (DEBUG)
-06/03/2022 09:03:31 PM - Scanner refresh interval time: 32.973440170288086 seconds (DEBUG)
-06/03/2022 09:03:31 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'MULN', 'APLT', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TECS', 'TGTX', 'DTC', 'PHAS'] (DEBUG)
-06/03/2022 09:03:34 PM - Initial pop up analyse time: 0.03889656066894531 (DEBUG)
-06/03/2022 09:03:34 PM - Unusual volume analyse time: 0.06783056259155273 (DEBUG)
-06/03/2022 09:03:34 PM - --- Total historical data retrieval and analysis time: 3.352407932281494 seconds --- (DEBUG)
-06/03/2022 09:04:04 PM - Scanner refresh interval time: 33.251925230026245 seconds (DEBUG)
-06/03/2022 09:04:04 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'MULN', 'APLT', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TECS', 'TGTX', 'DTC', 'PHAS'] (DEBUG)
-06/03/2022 09:04:08 PM - Initial pop up analyse time: 0.039223432540893555 (DEBUG)
-06/03/2022 09:04:08 PM - SOPA ramp up 2.12% above 50MA volume, Time: 09:03, 50MA volume: 33132.18, Volume: 39362.00, Volume ratio: 1.2, Close: $2.41 (DEBUG)
-06/03/2022 09:04:15 PM - Unusual volume analyse time: 7.269315004348755 (DEBUG)
-06/03/2022 09:04:15 PM - --- Total historical data retrieval and analysis time: 10.467321872711182 seconds --- (DEBUG)
-06/03/2022 09:04:40 PM - Scanner refresh interval time: 35.25700783729553 seconds (DEBUG)
-06/03/2022 09:04:40 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'MULN', 'APLT', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TECS', 'TGTX', 'DTC', 'PHAS'] (DEBUG)
-06/03/2022 09:04:43 PM - Initial pop up analyse time: 0.05686211585998535 (DEBUG)
-06/03/2022 09:04:43 PM - SOPA ramp up 3.32% above 50MA volume, Time: 09:04, 50MA volume: 35665.06, Volume: 169694.00, Volume ratio: 4.8, Close: $2.49 (DEBUG)
-06/03/2022 09:04:50 PM - Unusual volume analyse time: 7.338867425918579 (DEBUG)
-06/03/2022 09:04:50 PM - --- Total historical data retrieval and analysis time: 10.682871341705322 seconds --- (DEBUG)
-06/03/2022 09:05:08 PM - Scanner refresh interval time: 28.6856951713562 seconds (DEBUG)
-06/03/2022 09:05:08 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'YMTX', 'OKTA', 'BTMD', 'SOPA', 'STNE', 'MULN', 'APLT', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'MRTX', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TECS', 'TGTX', 'DTC', 'PHAS'] (DEBUG)
-06/03/2022 09:05:12 PM - Initial pop up analyse time: 0.03789806365966797 (DEBUG)
-06/03/2022 09:05:12 PM - SOPA ramp up 3.32% above 50MA volume, Time: 09:04, 50MA volume: 36888.0, Volume: 230841.00, Volume ratio: 6.3, Close: $2.49 (DEBUG)
-06/03/2022 09:05:19 PM - Unusual volume analyse time: 7.4554665088653564 (DEBUG)
-06/03/2022 09:05:19 PM - --- Total historical data retrieval and analysis time: 10.72559404373169 seconds --- (DEBUG)
-06/03/2022 09:05:42 PM - Scanner refresh interval time: 33.329570055007935 seconds (DEBUG)
-06/03/2022 09:05:42 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'SOPA', 'OKTA', 'BTMD', 'STNE', 'YMTX', 'MULN', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'APLT', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TGTX', 'DTC', 'TECS', 'MRTX', 'FAMI'] (DEBUG)
-06/03/2022 09:05:42 PM - Retrieve previous close for tickers: ['FAMI'] (DEBUG)
-06/03/2022 09:05:43 PM - --- Total snapshots retrieval time from yfinance: 0.9032273292541504 seconds --- (DEBUG)
-06/03/2022 09:05:43 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59', 'TOMZ': '1.0000', 'PHAS': '0.7678', 'FAMI': '1.1700'} (DEBUG)
-06/03/2022 09:05:46 PM - Initial pop up analyse time: 0.06183433532714844 (DEBUG)
-06/03/2022 09:05:46 PM - SOPA ramp up 3.32% above 50MA volume, Time: 09:04, 50MA volume: 36888.0, Volume: 230841.00, Volume ratio: 6.3, Close: $2.49 (DEBUG)
-06/03/2022 09:05:54 PM - Unusual volume analyse time: 7.577856540679932 (DEBUG)
-06/03/2022 09:05:54 PM - --- Total historical data retrieval and analysis time: 12.054238557815552 seconds --- (DEBUG)
-06/03/2022 09:06:08 PM - Scanner refresh interval time: 26.36253046989441 seconds (DEBUG)
-06/03/2022 09:06:08 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'SOPA', 'OKTA', 'BTMD', 'STNE', 'YMTX', 'MULN', 'BIOT', 'PAGS', 'BERZ', 'CNEY', 'APLT', 'CHGG', 'CRIS', 'RETA', 'SOXS', 'TGTX', 'DTC', 'TECS', 'MRTX', 'FAMI'] (DEBUG)
-06/03/2022 09:06:11 PM - Initial pop up analyse time: 0.045877695083618164 (DEBUG)
-06/03/2022 09:06:12 PM - Unusual volume analyse time: 0.06433248519897461 (DEBUG)
-06/03/2022 09:06:12 PM - --- Total historical data retrieval and analysis time: 3.5000686645507812 seconds --- (DEBUG)
-06/03/2022 09:06:37 PM - Scanner refresh interval time: 28.818963766098022 seconds (DEBUG)
-06/03/2022 09:06:37 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'STNE', 'YMTX', 'MULN', 'BIOT', 'BERZ', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'DTC', 'TECS', 'SOXS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:06:40 PM - Initial pop up analyse time: 0.04088711738586426 (DEBUG)
-06/03/2022 09:06:40 PM - SOPA ramp up 1.21% above 50MA volume, Time: 09:06, 50MA volume: 40068.64, Volume: 101044.00, Volume ratio: 2.5, Close: $2.51 (DEBUG)
-06/03/2022 09:06:47 PM - Unusual volume analyse time: 7.344663143157959 (DEBUG)
-06/03/2022 09:06:47 PM - --- Total historical data retrieval and analysis time: 10.580103158950806 seconds --- (DEBUG)
-06/03/2022 09:07:03 PM - Scanner refresh interval time: 26.56303858757019 seconds (DEBUG)
-06/03/2022 09:07:03 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'STNE', 'YMTX', 'MULN', 'BIOT', 'BERZ', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'DTC', 'TECS', 'SOXS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:07:07 PM - Initial pop up analyse time: 0.04390525817871094 (DEBUG)
-06/03/2022 09:07:07 PM - SOPA ramp up 1.61% above 50MA volume, Time: 09:06, 50MA volume: 41655.12, Volume: 180368.00, Volume ratio: 4.3, Close: $2.52 (DEBUG)
-06/03/2022 09:07:14 PM - Unusual volume analyse time: 7.429415464401245 (DEBUG)
-06/03/2022 09:07:14 PM - --- Total historical data retrieval and analysis time: 10.582613468170166 seconds --- (DEBUG)
-06/03/2022 09:07:32 PM - Scanner refresh interval time: 28.843981742858887 seconds (DEBUG)
-06/03/2022 09:07:32 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'STNE', 'YMTX', 'MULN', 'BIOT', 'BERZ', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'DTC', 'TECS', 'SOXS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:07:35 PM - Initial pop up analyse time: 0.04044651985168457 (DEBUG)
-06/03/2022 09:07:36 PM - SOPA ramp up 1.98% above 50MA volume, Time: 09:07, 50MA volume: 43452.34, Volume: 108242.00, Volume ratio: 2.5, Close: $2.57 (DEBUG)
-06/03/2022 09:07:43 PM - Unusual volume analyse time: 7.363713264465332 (DEBUG)
-06/03/2022 09:07:43 PM - --- Total historical data retrieval and analysis time: 10.552647113800049 seconds --- (DEBUG)
-06/03/2022 09:07:59 PM - Scanner refresh interval time: 26.655259132385254 seconds (DEBUG)
-06/03/2022 09:07:59 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'STNE', 'YMTX', 'MULN', 'BIOT', 'BERZ', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'DTC', 'TECS', 'SOXS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:08:02 PM - BTMD is popping up 18.33%, Time: 09:07, Close: $6.39, Change: 5.1%, Volume: 1478.00 (DEBUG)
-06/03/2022 09:08:07 PM - Initial pop up analyse time: 4.589725971221924 (DEBUG)
-06/03/2022 09:08:07 PM - SOPA ramp up 2.78% above 50MA volume, Time: 09:07, 50MA volume: 45333.24, Volume: 202287.00, Volume ratio: 4.5, Close: $2.59 (DEBUG)
-06/03/2022 09:08:14 PM - Unusual volume analyse time: 7.4785778522491455 (DEBUG)
-06/03/2022 09:08:14 PM - --- Total historical data retrieval and analysis time: 15.170125961303711 seconds --- (DEBUG)
-06/03/2022 09:08:28 PM - Scanner refresh interval time: 28.7022225856781 seconds (DEBUG)
-06/03/2022 09:08:28 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'STNE', 'YMTX', 'MULN', 'BIOT', 'BERZ', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'DTC', 'TECS', 'SOXS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:08:31 PM - BTMD is popping up 18.33%, Time: 09:07, Close: $6.39, Change: 5.1%, Volume: 1478.00 (DEBUG)
-06/03/2022 09:08:35 PM - Initial pop up analyse time: 4.5579822063446045 (DEBUG)
-06/03/2022 09:08:35 PM - SOPA ramp up 2.78% above 50MA volume, Time: 09:07, 50MA volume: 45333.24, Volume: 202287.00, Volume ratio: 4.5, Close: $2.59 (DEBUG)
-06/03/2022 09:08:43 PM - Unusual volume analyse time: 7.476419925689697 (DEBUG)
-06/03/2022 09:08:43 PM - --- Total historical data retrieval and analysis time: 15.209779739379883 seconds --- (DEBUG)
-06/03/2022 09:09:03 PM - Scanner refresh interval time: 35.697805643081665 seconds (DEBUG)
-06/03/2022 09:09:03 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'BTMD', 'OKTA', 'STNE', 'DRCT', 'YMTX', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'SOXS', 'TECS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:09:06 PM - Initial pop up analyse time: 0.04089093208312988 (DEBUG)
-06/03/2022 09:09:06 PM - Unusual volume analyse time: 0.06186175346374512 (DEBUG)
-06/03/2022 09:09:06 PM - --- Total historical data retrieval and analysis time: 3.1650137901306152 seconds --- (DEBUG)
-06/03/2022 09:09:30 PM - Scanner refresh interval time: 26.375290393829346 seconds (DEBUG)
-06/03/2022 09:09:30 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'BTMD', 'OKTA', 'STNE', 'DRCT', 'YMTX', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'SOXS', 'TECS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:09:33 PM - Initial pop up analyse time: 0.03989768028259277 (DEBUG)
-06/03/2022 09:09:33 PM - Unusual volume analyse time: 0.0688166618347168 (DEBUG)
-06/03/2022 09:09:33 PM - --- Total historical data retrieval and analysis time: 3.2905566692352295 seconds --- (DEBUG)
-06/03/2022 09:09:58 PM - Scanner refresh interval time: 28.737472772598267 seconds (DEBUG)
-06/03/2022 09:09:58 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'BTMD', 'OKTA', 'STNE', 'DRCT', 'YMTX', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'SOXS', 'TECS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:10:02 PM - Initial pop up analyse time: 0.03789830207824707 (DEBUG)
-06/03/2022 09:10:02 PM - Unusual volume analyse time: 0.07233333587646484 (DEBUG)
-06/03/2022 09:10:02 PM - --- Total historical data retrieval and analysis time: 3.1855127811431885 seconds --- (DEBUG)
-06/03/2022 09:10:34 PM - Scanner refresh interval time: 35.42229604721069 seconds (DEBUG)
-06/03/2022 09:10:34 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'BTMD', 'OKTA', 'STNE', 'DRCT', 'YMTX', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'SOXS', 'TECS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:10:37 PM - Initial pop up analyse time: 0.04539299011230469 (DEBUG)
-06/03/2022 09:10:37 PM - Unusual volume analyse time: 0.07080984115600586 (DEBUG)
-06/03/2022 09:10:37 PM - --- Total historical data retrieval and analysis time: 3.4798521995544434 seconds --- (DEBUG)
-06/03/2022 09:11:03 PM - Scanner refresh interval time: 29.198913097381592 seconds (DEBUG)
-06/03/2022 09:11:03 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'BTMD', 'OKTA', 'DRCT', 'STNE', 'YMTX', 'NEXI', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'TGTX', 'SOXS', 'TECS', 'MRTX'] (DEBUG)
-06/03/2022 09:11:03 PM - Retrieve previous close for tickers: ['NEXI'] (DEBUG)
-06/03/2022 09:11:04 PM - --- Total snapshots retrieval time from yfinance: 0.8999660015106201 seconds --- (DEBUG)
-06/03/2022 09:11:04 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59', 'TOMZ': '1.0000', 'PHAS': '0.7678', 'FAMI': '1.1700', 'NEXI': '2.1900'} (DEBUG)
-06/03/2022 09:11:07 PM - Initial pop up analyse time: 0.0468747615814209 (DEBUG)
-06/03/2022 09:11:07 PM - Unusual volume analyse time: 0.059358835220336914 (DEBUG)
-06/03/2022 09:11:07 PM - --- Total historical data retrieval and analysis time: 4.124108791351318 seconds --- (DEBUG)
-06/03/2022 09:11:32 PM - Scanner refresh interval time: 28.5806303024292 seconds (DEBUG)
-06/03/2022 09:11:32 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'SOPA', 'EFOI', 'SRLP', 'BTMD', 'OKTA', 'DRCT', 'STNE', 'NEXI', 'YMTX', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'SOXS', 'TECS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:11:35 PM - Initial pop up analyse time: 0.04787135124206543 (DEBUG)
-06/03/2022 09:11:35 PM - Unusual volume analyse time: 0.06582355499267578 (DEBUG)
-06/03/2022 09:11:35 PM - --- Total historical data retrieval and analysis time: 3.41237735748291 seconds --- (DEBUG)
-06/03/2022 09:12:03 PM - Scanner refresh interval time: 31.045154809951782 seconds (DEBUG)
-06/03/2022 09:12:03 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'SOPA', 'EFOI', 'SRLP', 'BTMD', 'OKTA', 'DRCT', 'STNE', 'NEXI', 'YMTX', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'SOXS', 'TECS', 'MRTX', 'PHAS'] (DEBUG)
-06/03/2022 09:12:06 PM - Initial pop up analyse time: 0.04587864875793457 (DEBUG)
-06/03/2022 09:12:06 PM - SOPA ramp up 1.57% above 50MA volume, Time: 09:11, 50MA volume: 52202.5, Volume: 155506.00, Volume ratio: 3.0, Close: $2.59 (DEBUG)
-06/03/2022 09:12:14 PM - Unusual volume analyse time: 7.6629860401153564 (DEBUG)
-06/03/2022 09:12:14 PM - --- Total historical data retrieval and analysis time: 11.05562949180603 seconds --- (DEBUG)
-06/03/2022 09:12:38 PM - Scanner refresh interval time: 35.579503297805786 seconds (DEBUG)
-06/03/2022 09:12:38 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'SOPA', 'EFOI', 'SRLP', 'BTMD', 'OKTA', 'STNE', 'DRCT', 'NEXI', 'YMTX', 'MULN', 'BERZ', 'BIOT', 'CNEY', 'PAGS', 'CHGG', 'CRIS', 'RETA', 'APLT', 'SOXS', 'TECS', 'MRTX', 'SQQQ'] (DEBUG)
-06/03/2022 09:12:43 PM - Initial pop up analyse time: 0.11121153831481934 (DEBUG)
-06/03/2022 09:12:43 PM - SOPA ramp up 1.57% above 50MA volume, Time: 09:11, 50MA volume: 52202.5, Volume: 155506.00, Volume ratio: 3.0, Close: $2.59 (DEBUG)
-06/03/2022 09:12:50 PM - Unusual volume analyse time: 7.683036804199219 (DEBUG)
-06/03/2022 09:12:50 PM - --- Total historical data retrieval and analysis time: 12.163915395736694 seconds --- (DEBUG)
-06/03/2022 09:13:05 PM - Scanner refresh interval time: 26.892311334609985 seconds (DEBUG)
-06/03/2022 09:13:05 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'SOPA', 'EFOI', 'SRLP', 'BTMD', 'OKTA', 'DRCT', 'STNE', 'NEXI', 'YMTX', 'MULN', 'BIOT', 'CNEY', 'BERZ', 'PAGS', 'APRE', 'CRIS', 'CHGG', 'RETA', 'APLT', 'SOXS', 'TECS', 'FNGD'] (DEBUG)
-06/03/2022 09:13:05 PM - Retrieve previous close for tickers: ['APRE'] (DEBUG)
-06/03/2022 09:13:06 PM - --- Total snapshots retrieval time from yfinance: 0.7282540798187256 seconds --- (DEBUG)
-06/03/2022 09:13:06 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59', 'TOMZ': '1.0000', 'PHAS': '0.7678', 'FAMI': '1.1700', 'NEXI': '2.1900', 'APRE': '0.7890'} (DEBUG)
-06/03/2022 09:13:10 PM - Initial pop up analyse time: 0.04089069366455078 (DEBUG)
-06/03/2022 09:13:10 PM - Unusual volume analyse time: 0.07879018783569336 (DEBUG)
-06/03/2022 09:13:10 PM - --- Total historical data retrieval and analysis time: 4.674604892730713 seconds --- (DEBUG)
-06/03/2022 09:13:36 PM - Scanner refresh interval time: 30.65039587020874 seconds (DEBUG)
-06/03/2022 09:13:36 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'DRCT', 'STNE', 'NEXI', 'YMTX', 'MULN', 'BIOT', 'CNEY', 'BERZ', 'APRE', 'CRIS', 'CHGG', 'RETA', 'APLT', 'PAGS', 'TECS', 'DTC', 'SOXS'] (DEBUG)
-06/03/2022 09:13:40 PM - Initial pop up analyse time: 0.04684710502624512 (DEBUG)
-06/03/2022 09:13:40 PM - Unusual volume analyse time: 0.09271574020385742 (DEBUG)
-06/03/2022 09:13:40 PM - --- Total historical data retrieval and analysis time: 3.8586483001708984 seconds --- (DEBUG)
-06/03/2022 09:14:05 PM - Scanner refresh interval time: 28.861884355545044 seconds (DEBUG)
-06/03/2022 09:14:05 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'DRCT', 'STNE', 'NEXI', 'YMTX', 'BIOT', 'CNEY', 'BERZ', 'MULN', 'APRE', 'CRIS', 'CHGG', 'RETA', 'APLT', 'TECS', 'DTC', 'SOXS', 'FNGD'] (DEBUG)
-06/03/2022 09:14:08 PM - Initial pop up analyse time: 0.045877933502197266 (DEBUG)
-06/03/2022 09:14:08 PM - Unusual volume analyse time: 0.08876395225524902 (DEBUG)
-06/03/2022 09:14:08 PM - --- Total historical data retrieval and analysis time: 3.551307439804077 seconds --- (DEBUG)
-06/03/2022 09:14:38 PM - Scanner refresh interval time: 33.49908638000488 seconds (DEBUG)
-06/03/2022 09:14:38 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SOPA', 'SRLP', 'OKTA', 'BTMD', 'DRCT', 'STNE', 'NEXI', 'YMTX', 'BIOT', 'CNEY', 'BERZ', 'MULN', 'APRE', 'CRIS', 'CHGG', 'RETA', 'APLT', 'TECS', 'DTC', 'SOXS', 'FNGD'] (DEBUG)
-06/03/2022 09:14:42 PM - Initial pop up analyse time: 0.04089045524597168 (DEBUG)
-06/03/2022 09:14:42 PM - Unusual volume analyse time: 0.09375190734863281 (DEBUG)
-06/03/2022 09:14:42 PM - --- Total historical data retrieval and analysis time: 3.81299090385437 seconds --- (DEBUG)
-06/03/2022 09:15:10 PM - Scanner refresh interval time: 31.634872436523438 seconds (DEBUG)
-06/03/2022 09:15:10 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'SOPA', 'BTMD', 'OKTA', 'DRCT', 'STNE', 'YMTX', 'CRIS', 'NEXI', 'BIOT', 'CNEY', 'BERZ', 'MULN', 'CHGG', 'APRE', 'RETA', 'APLT', 'SOXS', 'BQ', 'TECS', 'DTC'] (DEBUG)
-06/03/2022 09:15:10 PM - Retrieve previous close for tickers: ['BQ'] (DEBUG)
-06/03/2022 09:15:18 PM - --- Total snapshots retrieval time from yfinance: 8.52693796157837 seconds --- (DEBUG)
-06/03/2022 09:15:18 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59', 'TOMZ': '1.0000', 'PHAS': '0.7678', 'FAMI': '1.1700', 'NEXI': '2.1900', 'APRE': '0.7890', 'BQ': '5.63'} (DEBUG)
-06/03/2022 09:15:22 PM - Initial pop up analyse time: 0.06083798408508301 (DEBUG)
-06/03/2022 09:15:22 PM - Unusual volume analyse time: 0.10970592498779297 (DEBUG)
-06/03/2022 09:15:22 PM - --- Total historical data retrieval and analysis time: 12.473411083221436 seconds --- (DEBUG)
-06/03/2022 09:15:45 PM - Scanner refresh interval time: 35.37788701057434 seconds (DEBUG)
-06/03/2022 09:15:45 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'SOPA', 'BTMD', 'OKTA', 'DRCT', 'STNE', 'YMTX', 'CRIS', 'BQ', 'NEXI', 'MULN', 'BIOT', 'CNEY', 'BERZ', 'CHGG', 'APRE', 'RETA', 'APLT', 'HIBS', 'TECS', 'SOXS'] (DEBUG)
-06/03/2022 09:15:45 PM - Retrieve previous close for tickers: ['HIBS'] (DEBUG)
-06/03/2022 09:15:46 PM - --- Total snapshots retrieval time from yfinance: 0.8212296962738037 seconds --- (DEBUG)
-06/03/2022 09:15:46 PM - Updated ticker to previous close dict: {'MULN': '1.2300', 'BTMD': '5.40', 'PAGS': '15.90', 'SRLP': '15.83', 'APLT': '1.2200', 'TPTX': '34.16', 'CNEY': '1.5100', 'STNE': '10.42', 'LEXX': '2.2500', 'YMTX': '1.0600', 'BERZ': '27.23', 'DRCT': '1.7000', 'SOPA': '2.0900', 'EFOI': '1.1100', 'RDBX': '6.63', 'UVIX': '15.46', 'SEV': '3.5000', 'AMLX': '9.77', 'CHGG': '20.42', 'MGLD': '1.4700', 'BIOT': '9.19', 'MRTX': '40.26', 'CRIS': '0.8099', 'OKTA': '93.68', 'TGTX': '4.1000', 'SOXS': '38.10', 'DTC': '5.53', 'SQQQ': '44.50', 'FNGD': '56.19', 'CVM': '4.1200', 'TECS': '37.24', 'TNXP': '2.8000', 'RETA': '28.59', 'TOMZ': '1.0000', 'PHAS': '0.7678', 'FAMI': '1.1700', 'NEXI': '2.1900', 'APRE': '0.7890', 'BQ': '5.63', 'HIBS': '8.39'} (DEBUG)
-06/03/2022 09:15:50 PM - Initial pop up analyse time: 0.043881893157958984 (DEBUG)
-06/03/2022 09:15:50 PM - Unusual volume analyse time: 0.07480025291442871 (DEBUG)
-06/03/2022 09:15:50 PM - --- Total historical data retrieval and analysis time: 4.716365575790405 seconds --- (DEBUG)
-06/03/2022 09:16:19 PM - Scanner refresh interval time: 33.434467792510986 seconds (DEBUG)
-06/03/2022 09:16:19 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'SOPA', 'BTMD', 'OKTA', 'DRCT', 'STNE', 'YMTX', 'CRIS', 'BQ', 'NEXI', 'BIOT', 'CNEY', 'BERZ', 'MULN', 'CHGG', 'APRE', 'RETA', 'HIBS', 'SOXS', 'TECS', 'DTC'] (DEBUG)
-06/03/2022 09:16:23 PM - Initial pop up analyse time: 0.07280373573303223 (DEBUG)
-06/03/2022 09:16:23 PM - Unusual volume analyse time: 0.09075546264648438 (DEBUG)
-06/03/2022 09:16:23 PM - --- Total historical data retrieval and analysis time: 4.2681884765625 seconds --- (DEBUG)
-06/03/2022 09:16:52 PM - Scanner refresh interval time: 33.61763882637024 seconds (DEBUG)
-06/03/2022 09:16:52 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'SOPA', 'BTMD', 'OKTA', 'STNE', 'DRCT', 'BQ', 'YMTX', 'CRIS', 'NEXI', 'BIOT', 'CNEY', 'BERZ', 'MULN', 'TECS', 'APRE', 'RETA', 'SOXS', 'HIBS', 'DTC', 'FNGD'] (DEBUG)
-06/03/2022 09:16:56 PM - Initial pop up analyse time: 0.04587554931640625 (DEBUG)
-06/03/2022 09:16:56 PM - Unusual volume analyse time: 0.05997514724731445 (DEBUG)
-06/03/2022 09:16:56 PM - --- Total historical data retrieval and analysis time: 3.5223517417907715 seconds --- (DEBUG)
-06/03/2022 09:17:26 PM - Scanner refresh interval time: 33.51763081550598 seconds (DEBUG)
-06/03/2022 09:17:26 PM - Action: scannerDataEnd, reqId: 0, Result length: 25, Result: ['TPTX', 'AMLX', 'MGLD', 'EFOI', 'SRLP', 'SOPA', 'BTMD', 'OKTA', 'STNE', 'DRCT', 'BQ', 'YMTX', 'CRIS', 'NEXI', 'BIOT', 'CNEY', 'BERZ', 'MULN', 'TECS', 'APRE', 'RETA', 'SOXS', 'HIBS', 'DTC', 'FNGD'] (DEBUG)
-06/03/2022 09:17:29 PM - Initial pop up analyse time: 0.038855552673339844 (DEBUG)
-06/03/2022 09:17:29 PM - SOPA ramp up 1.62% above 50MA volume, Time: 09:16, 50MA volume: 60470.14, Volume: 74517.00, Volume ratio: 1.2, Close: $2.51 (DEBUG)
