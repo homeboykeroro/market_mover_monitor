@@ -52,7 +52,7 @@ class IBConnector(EWrapper, EClient):
         high = bar.high
         low = bar.low
         close = bar.close
-        volume = bar.volume * 100
+        volume = bar.volume
         dt = bar.date.replace(" US/Eastern", "")
 
         timeframe_idx = (reqId - 1) // len(self.__scanner_result_list)

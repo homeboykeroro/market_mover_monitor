@@ -27,7 +27,7 @@ class InitialPopUp(PatternAnalyser):
         start_time = time.time()
         min_marubozu_ratio = 30
         min_close_pct = 4
-        min_previous_close_pct = 4
+        min_previous_close_pct = 10
         max_ramp_occurrence = 6
         notify_period = 2
 

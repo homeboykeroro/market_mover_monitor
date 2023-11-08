@@ -33,9 +33,11 @@ def main():
                 if is_premarket_hours(current_datetime) or is_normal_trading_hours(current_datetime):
                     gainer_scan_code = ScanCode.TOP_GAINERS.value
                     is_after_hour = False
+                    print('Pre Market/ Normal Trading Hours')
                 elif is_postmarket_hours(current_datetime):
                     gainer_scan_code = ScanCode.TOP_GAINERS_IN_AFTER_HOURS.value
                     is_after_hour = True
+                    print('Post Market Trading Hours')
 
                 print('Listening...')
                 text_to_speech_engine.speak('Connecting')
@@ -45,7 +47,7 @@ def main():
 
                 #API Scanner subscriptions update every 30 seconds, just as they do in TWS.
                 filter = get_filter(scan_code = gainer_scan_code, instrument = Instrument.STOCKS.value, 
-                                min_price = 0.8, min_volume = 5000, 
+                                min_price = 0.6, min_volume = 5000, 
                                 include_otc = False,
                                 no_of_result = 15)
                 connector.reqScannerSubscription(0, filter, [], [])
