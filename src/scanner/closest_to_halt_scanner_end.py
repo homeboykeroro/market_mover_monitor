@@ -166,4 +166,4 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
         for rank, contract_detail in enumerate(self.__closest_to_halt_contract_detail_list):
             candle_req_id = scanner_connector.CLOSEST_TO_HALT_MINUTE_CANDLE_REQ_ID_PREFIX + rank
             logger.log_debug_msg(f'Send get closest to halt ticker {contract_detail.contract.symbol} data at {datetime.datetime.now().astimezone(pytz.timezone("US/Eastern"))}', with_speech = False)
-            scanner_connector.reqHistoricalData(candle_req_id, contract_detail, '', '120 S', Timeframe.ONE_MINUTE.value, 'TRADES', 0, 1, False, [])
+            scanner_connector.reqHistoricalData(candle_req_id, contract_detail.contract, '', '120 S', Timeframe.ONE_MINUTE.value, 'TRADES', 0, 1, False, [])

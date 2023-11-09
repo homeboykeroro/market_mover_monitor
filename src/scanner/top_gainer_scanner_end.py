@@ -200,9 +200,11 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                 scanner_connector.reqHistoricalData(get_previous_close_req_id, contract_detail.contract, '', '2 D', Timeframe.ONE_DAY.value, 'TRADES', 0, 1, False, [])
                 
     def __get_timeframe_candle(self, scanner_connector: ScannerConnector):
-            us_current_datetime = datetime.datetime.now()
-            candle_start_datetime = get_trading_start_time_by_current_datetime(us_current_datetime)
-            timeframe_interval = (us_current_datetime.time() - candle_start_datetime).seconds
+            us_current_datetime = datetime.datetime.now().astimezone(pytz.timezone('US/Eastern'))
+            candle_start_time = get_trading_start_time_by_current_datetime(us_current_datetime)
+            candle_start_datetime = datetime.datetime.combine(datetime.date.today(), candle_start_time)
+            candle_start_datetime = pytz.timezone('US/Eastern').localize(candle_start_datetime)
+            timeframe_interval = (us_current_datetime - candle_start_datetime).seconds
             truncate_seconds = timeframe_interval % 60
             timeframe_interval = timeframe_interval - truncate_seconds
             logger.log_debug_msg(f'US current datetime: {us_current_datetime}, Candle start time: {candle_start_datetime}, Timeframe interval: {timeframe_interval} seconds', with_speech = False)
@@ -225,4 +227,4 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                 for rank, contract_detail in enumerate(self.__top_gainer_contract_detail_list):
                     candle_req_id = ((timeframe_idx + 1) * scanner_connector.TOP_GAINER_MINUTE_CANDLE_REQ_ID_PREFIX) + rank
                     logger.log_debug_msg(f'Get {contract_detail.contract.symbol} {self.__timeframe_list[timeframe_idx].name} minute candles', with_speech = False)
-                    scanner_connector.reqHistoricalData(candle_req_id, contract_detail, '', timeframe_interval, timeframe.value, 'TRADES', 0, 1, False, [])
+                    scanner_connector.reqHistoricalData(candle_req_id, contract_detail.contract, '', timeframe_interval, timeframe.value, 'TRADES', 0, 1, False, [])
