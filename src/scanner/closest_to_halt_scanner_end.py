@@ -66,7 +66,7 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             logger.log_debug_msg(f'0 <= reqId - CLOSEST_TO_HALT_DAY_CANDLE_REQ_ID_PREFIX of 1000 <= {RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1}', with_speech = False)
             rank = req_id % RequestIdPrefix.CLOSEST_TO_HALT_DAY_CANDLE_REQ_ID_PREFIX.value
             ticker = self.__closest_to_halt_ticker_list[rank]
-            previous_close = bar.open
+            previous_close = bar.close
             ticker_to_previous_close_dict[ticker] = previous_close
             self.__previous_close_retrieval_counter += 1
             logger.log_debug_msg(f'{ticker} previous close: {previous_close}, rank: {rank}', with_speech = False)
@@ -154,7 +154,7 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             if contract_detail.contract.symbol not in ticker_to_previous_close_dict:
                 logger.log_debug_msg(f'Get {contract_detail.contract.symbol} previous close for closest to halt, rank: {contract_rank}', with_speech = False)
                 get_previous_close_req_id = RequestIdPrefix.CLOSEST_TO_HALT_DAY_CANDLE_REQ_ID_PREFIX.value + contract_rank
-                scanner_connector.reqHistoricalData(get_previous_close_req_id, contract_detail.contract, '', '1 D', Timeframe.ONE_DAY.value, 'TRADES', 1, 1, False, [])
+                scanner_connector.reqHistoricalData(get_previous_close_req_id, contract_detail.contract, '', '2 D', Timeframe.ONE_DAY.value, 'TRADES', 1, 1, False, [])
                 
     def __get_one_minute_candle(self, scanner_connector):
         self.__single_ticker_ohlcv_list = []

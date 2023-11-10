@@ -38,9 +38,10 @@ def retrieve_trade_halt_info() -> dict:
                     reason = record.find(TradeHaltRecord.REASON).string
                     halt_date = record.find(TradeHaltRecord.HALT_DATE).string
                     halt_time = record.find(TradeHaltRecord.HALT_TIME).string
-                    resumption_time = record.find(TradeHaltRecord.RESUMPTION_TRADE_TIME).string
+                    resumption_quote_time = record.find(TradeHaltRecord.RESUMPTION_QUOTE_TIME).string
+                    resumption_trade_time = record.find(TradeHaltRecord.RESUMPTION_TRADE_TIME).string
 
-                    trade_halt_record = TradeHaltRecord(symbol, company, reason, halt_date, halt_time, resumption_time)
+                    trade_halt_record = TradeHaltRecord(symbol, company, reason, halt_date, halt_time, resumption_quote_time, resumption_trade_time)
                     ticker_to_trade_halt_info_dict[symbol] = trade_halt_record
                 else:
                     logger.log_debug_msg(f'Exclude invalid ticker of {symbol} from trade halt info result', with_speech = False)      

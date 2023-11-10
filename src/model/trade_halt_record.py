@@ -8,22 +8,25 @@ class TradeHaltRecord:
     REASON = 'ndaq:reasoncode'
     HALT_DATE = 'ndaq:haltdate'
     HALT_TIME = 'ndaq:halttime'
+    RESUMPTION_QUOTE_TIME = 'ndaq:resumptionquotetime'
     RESUMPTION_TRADE_TIME = 'ndaq:resumptiontradetime'
 
     def __init__(self, symbol, company, reason, 
                 halt_date, halt_time, 
-                resumption_time):
+                resumption_quote_time,
+                resumption_trade_time):
         self.__symbol = symbol
         self.__company = company
         self.__reason = reason
         self.__halt_date = halt_date
         self.__halt_time = halt_time
-        self.__resumption_time = resumption_time
+        self.__resumption_quote_time = resumption_quote_time
+        self.__resumption_trade_time = resumption_trade_time
     
     def __members(self):
         return (self.__symbol, self.__company, self.__reason,
                 self.__halt_date, self.__halt_time,
-                self.__resumption_time)
+                self.__resumption_quote_time)
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, TradeHaltRecord):
@@ -73,17 +76,25 @@ class TradeHaltRecord:
         self.__halt_time = halt_time
 
     @property
-    def __resumption_time(self):
-        return self.____resumption_time
+    def resumption_quote_time(self):
+        return self.__resumption_quote_time
     
-    @__resumption_time.setter
-    def __resumption_time(self, __resumption_time):
-        self.____resumption_time = __resumption_time
+    @resumption_quote_time.setter
+    def resumption_quote_time(self, resumption_quote_time):
+        self.__resumption_quote_time = resumption_quote_time
+        
+    @property
+    def resumption_trade_time(self):
+        return self.__resumption_trade_time
+    
+    @resumption_trade_time.setter
+    def resumption_trade_time(self, resumption_trade_time):
+        self.__resumption_trade_time = resumption_trade_time
 
     def display(self):
-        display_resumption_time = self.__resumption_time if self.__resumption_time != None else 'Unknown'
+        display_resumption_quote_time = self.__resumption_quote_time if self.__resumption_quote_time != None else 'Unknown'
         display_halt_date = datetime.strptime(self.__halt_date, '%m/%d/%Y').strftime('%Y-%m-%d')
         display_reason = HaltReason[self.__reason].value if (HaltReason.has_key(self.__reason)) else self.__reason
-        display_msg = f'{self.__company} ({self.__symbol}), {display_reason}, Halt Date Time: {display_halt_date} {self.__halt_time}, Resume Trade at {display_resumption_time}'
+        display_msg = f'{self.__company} ({self.__symbol}), {display_reason}, Halt Date Time: {display_halt_date} {self.__halt_time}, Quouted Resumption Time: {display_resumption_quote_time}'
 
         print(display_msg)

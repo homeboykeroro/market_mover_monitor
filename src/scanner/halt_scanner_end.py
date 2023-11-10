@@ -54,7 +54,7 @@ class HaltScannerEnd(ScannerConnectorCallBack):
                 trade_halt_record = ticker_to_trade_halt_info_dict[ticker]
                 halt_date = trade_halt_record.halt_date
                 halt_time = trade_halt_record.halt_time
-                resumption_time = trade_halt_record.resumption_time
+                resumption_quote_time = trade_halt_record.resumption_quote_time
                 reason_code = trade_halt_record.reason
                 
                 halt_datetime = datetime.datetime.strptime(f'{halt_date} {halt_time}', '%m/%d/%Y %H:%M:%S')
@@ -63,7 +63,7 @@ class HaltScannerEnd(ScannerConnectorCallBack):
                 halt_hour = halt_datetime.hour
                 halt_minute = halt_datetime.minute
                 display_halt_time = halt_datetime.strftime("%H:%M:%S")
-                display_resumption_time = resumption_time if resumption_time else 'Unknown'
+                display_resumption_quote_time = resumption_quote_time if resumption_quote_time else 'Unknown'
 
                 read_time_str = f'{halt_hour} {halt_minute}' if (halt_minute > 0) else f'{halt_hour} o clock' 
                 read_ticker_str = " ".join(ticker)
@@ -72,7 +72,7 @@ class HaltScannerEnd(ScannerConnectorCallBack):
                 time_interval = (us_current_datetime - halt_datetime).total_seconds() / 60
                 if time_interval <= self.TRADE_HALT_NOTIFY_TIMES and reason_code in self.TRADE_HALT_CODE_LIST:
                     logger.log_debug_msg(f'{read_ticker_str} {read_reason_code_str} halt at {read_time_str}')
-                    logger.log_debug_msg(f'{ticker} {reason_code} ({HaltReason[reason_code].value}) at {display_halt_time}, Resumption time: {display_resumption_time}', with_speech = False)
+                    logger.log_debug_msg(f'{ticker} {reason_code} ({HaltReason[reason_code].value}) at {display_halt_time}, Quoted resumption time: {display_resumption_quote_time}', with_speech = False)
     
     def execute_historical_data(self, req_id: int, bar: BarData, ticker_to_previous_close_dict: dict) -> None:
         pass 
