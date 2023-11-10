@@ -5,6 +5,10 @@ from ibapi.contract import ContractDetails
 
 from scanner.scanner_connector_callback import ScannerConnectorCallBack
 
+from constant.request_id_prefix import RequestIdPrefix
+from constant.scanner_to_request_id import ScannerToRequestId
+from constant.scanner_to_timeframes import ScannerToTimeframes
+
 from utils.logger import Logger
 
 from exception.connection_exception import ConnectionException
@@ -12,27 +16,11 @@ from exception.connection_exception import ConnectionException
 logger = Logger()
 
 class ScannerConnector(EWrapper, EClient):
-    TOP_GAINER_DAY_CANDLE_REQ_ID_PREFIX = 100
-    TOP_GAINER_MINUTE_CANDLE_REQ_ID_PREFIX = 200
-    CLOSEST_TO_HALT_DAY_CANDLE_REQ_ID_PREFIX = 1000
-    CLOSEST_TO_HALT_MINUTE_CANDLE_REQ_ID_PREFIX = 1100
-    HALT_DAY_CANDLE_REQ_ID_PREFIX = 2000
-    HALT_MINUTE_CANDLE_REQ_ID_PREFIX = 2100
-    MAXIMUM_SCANNER_RESULT_SIZE = 50
-    
     def __init__(self):
         EWrapper.__init__(self)
         EClient.__init__(self, self)
         self.__ticker_to_previous_close_dict = {}
         self.__req_id_to_callback_dict = {}
-        
-    @property
-    def ticker_to_previous_close_dict(self):
-        return self.__ticker_to_previous_close_dict
-    
-    @ticker_to_previous_close_dict.setter
-    def ticker_to_previous_close_dict(self, ticker_to_previous_close_dict):
-        self.__ticker_to_previous_close_dict = ticker_to_previous_close_dict
         
     def connectAck(self):
         logger.log_debug_msg('TWS Connection Success')
@@ -59,24 +47,53 @@ class ScannerConnector(EWrapper, EClient):
             raise Exception(fatal_error_msg)
   
     def historicalData(self, reqId, bar):
-        callback = self.__req_id_to_callback_dict[reqId]
-        callback.execute_historical_data(reqId, bar, self)
+        if ((0 <= reqId - RequestIdPrefix.TOP_GAINER_DAY_CANDLE_REQ_ID_PREFIX.value <= RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1)
+                or (RequestIdPrefix.TOP_GAINER_MINUTE_CANDLE_REQ_ID_PREFIX.value <= reqId <= ((RequestIdPrefix.TOP_GAINER_MINUTE_CANDLE_REQ_ID_PREFIX.value * len(ScannerToTimeframes.TOP_GAINER.value)) + RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1))):
+            callback_req_id = ScannerToRequestId.TOP_GAINER.value
+            
+        if ((0 <= reqId - RequestIdPrefix.CLOSEST_TO_HALT_DAY_CANDLE_REQ_ID_PREFIX.value <= RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1)
+                or (0 <= reqId - RequestIdPrefix.CLOSEST_TO_HALT_MINUTE_CANDLE_REQ_ID_PREFIX.value <= RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1)):
+            callback_req_id = ScannerToRequestId.CLOSEST_TO_HALT.value
+          
+        if callback_req_id:  
+            self.__req_id_to_callback_dict[callback_req_id].execute_historical_data(reqId, bar, self.__ticker_to_previous_close_dict)
+        else:
+            logger.log_debug_msg(f'No historical data callback is called, reqId: {reqId}', with_speech = False)
 
     #Marks the ending of historical bars reception.
     def historicalDataEnd(self, reqId: int, start: str, end: str):
-        callback = self.__req_id_to_callback_dict[reqId]
-        callback.execute_historical_data_end(reqId, self)
+        if ((0 <= reqId - RequestIdPrefix.TOP_GAINER_DAY_CANDLE_REQ_ID_PREFIX.value <= RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1)
+                or (RequestIdPrefix.TOP_GAINER_MINUTE_CANDLE_REQ_ID_PREFIX.value <= reqId <= ((RequestIdPrefix.TOP_GAINER_MINUTE_CANDLE_REQ_ID_PREFIX.value * len(ScannerToTimeframes.TOP_GAINER.value)) + RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1))):
+            callback_req_id = ScannerToRequestId.TOP_GAINER.value
+            
+        if ((0 <= reqId - RequestIdPrefix.CLOSEST_TO_HALT_DAY_CANDLE_REQ_ID_PREFIX.value <= RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1)
+                or (0 <= reqId - RequestIdPrefix.CLOSEST_TO_HALT_MINUTE_CANDLE_REQ_ID_PREFIX.value <= RequestIdPrefix.MAXIMUM_SCANNER_RESULT_SIZE.value - 1)):
+            callback_req_id = ScannerToRequestId.CLOSEST_TO_HALT.value
+        
+        if callback_req_id:  
+            self.__req_id_to_callback_dict[callback_req_id].execute_historical_data_end(reqId, self.__ticker_to_previous_close_dict)
+        else:
+            logger.log_debug_msg(f'No historical data end callback is called, reqId: {reqId}', with_speech = False)
+            
         logger.log_debug_msg(f'Previous close dict: {self.__ticker_to_previous_close_dict}', with_speech = False)
         
     def scannerData(self, reqId: int, rank: int, contractDetails: ContractDetails, distance: str, benchmark: str, projection: str, legsStr: str):
         callback = self.__req_id_to_callback_dict[reqId]
-        callback.execute_scanner_data(reqId, rank, contractDetails, self)
         
+        if callback:  
+            callback.execute_scanner_data(reqId, rank, contractDetails)
+        else:
+            logger.log_debug_msg(f'No scanner data callback is called, reqId: {reqId}', with_speech = False)
+            
     #scannerDataEnd marker will indicate when all results have been delivered.
     #The returned results to scannerData simply consists of a list of contracts, no market data field (bid, ask, last, volume, ...).
     def scannerDataEnd(self, reqId: int):
         callback = self.__req_id_to_callback_dict[reqId]
-        callback.execute_scanner_end(reqId, self)
+        
+        if callback:  
+            callback.execute_scanner_end(reqId, self.__ticker_to_previous_close_dict, self)
+        else:
+            logger.log_debug_msg(f'No scanner data end callback is called, reqId: {reqId}', with_speech = False)
         
     def add_scanner_connector_callback(self, reqId, callback: ScannerConnectorCallBack):
         self.__req_id_to_callback_dict[reqId] = callback

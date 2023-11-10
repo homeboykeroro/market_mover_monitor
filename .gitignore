@@ -3,5 +3,3 @@
 /tests/
 .vscode
 __pycache__
-/src/build/
-/src/dist/

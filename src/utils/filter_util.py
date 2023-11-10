@@ -37,8 +37,6 @@ def get_top_gainer_scan_code():
         logger.log_debug_msg('After hours trading hours', with_speech = False)
         return ScanCode.TOP_GAINERS_IN_AFTER_HOURS.value
     else:
-        logger.log_debug_msg('Scanner is idle till valid trading hours...', with_speech = False)
-        logger.log_debug_msg('Scanner is idle', with_speech = True)
         return None
 
 def get_filter(

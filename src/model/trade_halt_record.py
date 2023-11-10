@@ -3,12 +3,12 @@ from datetime import datetime
 from constant.halt_reason import HaltReason
 
 class TradeHaltRecord:
-    SYMBOL = 'ndaq:IssueSymbol'
-    COMPANY = 'ndaq:IssueName'
-    REASON = 'ndaq:ReasonCode'
-    HALT_DATE = 'ndaq:HaltDate'
-    HALT_TIME = 'ndaq:HaltTime'
-    RESUMPTION_TRADE_TIME = 'ndaq:ResumptionTradeTime'
+    SYMBOL = 'ndaq:issuesymbol'
+    COMPANY = 'ndaq:issuename'
+    REASON = 'ndaq:reasoncode'
+    HALT_DATE = 'ndaq:haltdate'
+    HALT_TIME = 'ndaq:halttime'
+    RESUMPTION_TRADE_TIME = 'ndaq:resumptiontradetime'
 
     def __init__(self, symbol, company, reason, 
                 halt_date, halt_time, 

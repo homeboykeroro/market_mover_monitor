@@ -7,14 +7,12 @@ import pandas as pd
 from ibapi.common import BarData
 from ibapi.contract import ContractDetails
 
-from datasource.scanner_connector import ScannerConnector
 from scanner.scanner_connector_callback import ScannerConnectorCallBack
 
 from constant.indicator.indicator import Indicator
 from constant.indicator.customised_indicator import CustomisedIndicator
 from constant.scanner_to_request_id import ScannerToRequestId
 from constant.halt_reason import HaltReason
-from constant.timeframe import Timeframe
 
 from utils.trade_halt_info_retrieval_util import retrieve_trade_halt_info
 from utils.logger import Logger
@@ -30,24 +28,23 @@ class HaltScannerEnd(ScannerConnectorCallBack):
         self.__start_time = None
         self.__halt_ticker_list = []
         
-    def execute_scanner_data(self, req_id: int, rank: int, contract_details: ContractDetails, scanner_connector: ScannerConnector) -> None:
+    def execute_scanner_data(self, req_id: int, rank: int, contract_details: ContractDetails) -> None:
         logger.log_debug_msg(f'Halt scanner data, reqId: {req_id}', with_speech = False)
         
-        if req_id == ScannerToRequestId.HALT.value:
-            logger.log_debug_msg('Get scanner data for Halt', with_speech = False)
-            if rank == 0:
-                if self.__start_time != None:
-                    logger.log_debug_msg(f'Halt scanner refresh interval time: {time.time() - self.__start_time} seconds', with_speech = False)
-                    
-                self.__start_time = time.time()
-                self.__halt_ticker_list = []
+        logger.log_debug_msg('Get scanner data for Halt', with_speech = False)
+        if rank == 0:
+            if self.__start_time != None:
+                logger.log_debug_msg(f'Halt scanner refresh interval time: {time.time() - self.__start_time} seconds', with_speech = False)
+                
+            self.__start_time = time.time()
+            self.__halt_ticker_list = []
 
-                if re.match('^[a-zA-Z]{1,4}$', contract_details.contract.symbol): 
-                    self.__halt_ticker_list.append(contract_details.contract.symbol)
-                else:
-                    logger.log_debug_msg(f'Exclude invalid ticker of {contract_details.contract.symbol} from halt scanner result', with_speech = False)      
+        if re.match('^[a-zA-Z]{1,4}$', contract_details.contract.symbol): 
+            self.__halt_ticker_list.append(contract_details.contract.symbol)
+        else:
+            logger.log_debug_msg(f'Exclude invalid ticker of {contract_details.contract.symbol} from halt scanner result', with_speech = False)      
         
-    def execute_scanner_end(self, req_id: int, scanner_connector: ScannerConnector) -> None:
+    def execute_scanner_end(self, req_id: int, ticker_to_previous_close_dict: dict, scanner_connector) -> None:
         logger.log_debug_msg(f'Halt scannerDataEnd, reqId: {req_id}, Result length: {len(self.__halt_ticker_list)}, Result: {self.__halt_ticker_list}', with_speech = False)
         us_current_datetime = datetime.datetime.now().astimezone(pytz.timezone('US/Eastern'))
         ticker_to_trade_halt_info_dict = retrieve_trade_halt_info()
@@ -60,7 +57,7 @@ class HaltScannerEnd(ScannerConnectorCallBack):
                 resumption_time = trade_halt_record.resumption_time
                 reason_code = trade_halt_record.reason
                 
-                halt_datetime = datetime.strptime(f'{halt_date} {halt_time}', '%m/%d/%Y %H:%M:%S')
+                halt_datetime = datetime.datetime.strptime(f'{halt_date} {halt_time}', '%m/%d/%Y %H:%M:%S')
                 halt_datetime = pytz.timezone('US/Eastern').localize(halt_datetime)
                 
                 halt_hour = halt_datetime.hour
@@ -77,8 +74,8 @@ class HaltScannerEnd(ScannerConnectorCallBack):
                     logger.log_debug_msg(f'{read_ticker_str} {read_reason_code_str} halt at {read_time_str}')
                     logger.log_debug_msg(f'{ticker} {reason_code} ({HaltReason[reason_code].value}) at {display_halt_time}, Resumption time: {display_resumption_time}', with_speech = False)
     
-    def execute_historical_data(self, req_id: int, bar: BarData, scanner_connector: ScannerConnector) -> None:
+    def execute_historical_data(self, req_id: int, bar: BarData, ticker_to_previous_close_dict: dict) -> None:
         pass 
     
-    def execute_historical_data_end(self, req_id: int, scanner_connector: ScannerConnector) -> None:
+    def execute_historical_data_end(self, req_id: int, ticker_to_previous_close_dict: dict) -> None:
         pass

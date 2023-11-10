@@ -21,13 +21,14 @@ logger = Logger()
 
 def main():
     connector = None
-    logger.log_debug_msg('Connecting...')
     
     try:
         while True:
             gainer_scan_code = get_top_gainer_scan_code()
             
             if gainer_scan_code is not None:
+                logger.log_debug_msg('Connecting...')
+                
                 scanner_connector = ScannerConnector()
                 scanner_connector.connect('127.0.0.1', 7496, 0)
                 
@@ -57,6 +58,9 @@ def main():
                 scanner_connector.reqScannerSubscription(ScannerToRequestId.HALT.value, halt_filter, [], [])
                 
                 scanner_connector.run()
+            else:
+                logger.log_debug_msg('Scanner is idle...', with_speech = True)
+                continue
     except Exception as e:
         if connector:
             connector.disconnect()
