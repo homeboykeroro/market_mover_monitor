@@ -10,22 +10,17 @@ class Logger:
         self.__text_to_speech_engine = TextToSpeechEngine()
 
     def log_debug_msg(self, msg: str, with_speech: bool = True, with_std_out: bool = True):
-        self.__logger.debug(msg)
+        if with_std_out:
+            self.__logger.debug(msg)
         
         if (with_speech):
             self.__text_to_speech_engine.speak(msg)
             
-        if (with_std_out):
-            print(msg)
-            
-    def log_error_msg(self, msg: str, with_speech: bool = True, with_std_out: bool = True):
+    def log_error_msg(self, msg: str, with_speech: bool = True):
         self.__logger.exception(msg)
         
         if (with_speech):
             self.__text_to_speech_engine.speak(msg)
-            
-        if (with_std_out):
-            print(msg)
 
     def __get_logger(self, name: str = 'root',
                    log_parent_directory: str = 'C:/Users/John/Downloads/Trade History/Scanner',

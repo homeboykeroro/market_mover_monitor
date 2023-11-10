@@ -71,7 +71,7 @@ class HaltScannerEnd(ScannerConnectorCallBack):
                 
                 time_interval = (us_current_datetime - halt_datetime).total_seconds() / 60
                 if time_interval <= self.TRADE_HALT_NOTIFY_TIMES and reason_code in self.TRADE_HALT_CODE_LIST:
-                    logger.log_debug_msg(f'{read_ticker_str} {read_reason_code_str} halt at {read_time_str}')
+                    logger.log_debug_msg(f'{read_ticker_str} {read_reason_code_str} halt at {read_time_str}', with_std_out = False)
                     logger.log_debug_msg(f'{ticker} {reason_code} ({HaltReason[reason_code].value}) at {display_halt_time}, Quoted resumption time: {display_resumption_quote_time}', with_speech = False)
     
     def execute_historical_data(self, req_id: int, bar: BarData, ticker_to_previous_close_dict: dict) -> None:
