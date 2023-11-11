@@ -26,6 +26,6 @@ def get_trading_start_time_by_current_datetime(input_us_datetime: datetime) -> d
     elif normal_trading_hour_start_time <= input_us_datetime.time() < normal_trading_hour_end_time:
         return normal_trading_hour_start_time
     elif normal_trading_hour_end_time <= input_us_datetime.time() < after_hours_trading_hour_end_time:
-        return after_hours_trading_hour_end_time
+        return normal_trading_hour_end_time
     else:
         return None

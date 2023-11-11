@@ -15,6 +15,7 @@ from constant.scanner_to_request_id import ScannerToRequestId
 from constant.timeframe import Timeframe
 from constant.request_id_prefix import RequestIdPrefix
 
+from utils.datetime_util import get_trading_start_time_by_current_datetime
 from utils.logger import Logger
 
 idx = pd.IndexSlice
@@ -149,12 +150,26 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
         
         logger.log_debug_msg(f'No. of previous close request for closest to halt: {self.__previous_close_retrieval_size}', with_speech = False)
         
+        us_current_datetime = datetime.datetime.now().astimezone(pytz.timezone('US/Eastern'))
+        previous_close_candle_start_time = get_trading_start_time_by_current_datetime(us_current_datetime)
+        
+        pre_market_trading_hour_start_time = datetime.time(4, 0, 0) # 2
+        normal_trading_hour_start_time = datetime.time(9, 30, 0) # 2
+        
+        if ((previous_close_candle_start_time == pre_market_trading_hour_start_time) 
+                or (previous_close_candle_start_time == normal_trading_hour_start_time)):
+            previous_close_duration_str = '2 D'
+        else: 
+            previous_close_duration_str = '1 D'
+        
+        logger.log_debug_msg(f'Previous close duration string: {previous_close_duration_str}, candle start time: {previous_close_candle_start_time}', with_speech = False)
+        
         # Send get previous close requests
         for contract_rank, contract_detail in enumerate(self.__closest_to_halt_contract_detail_list):
             if contract_detail.contract.symbol not in ticker_to_previous_close_dict:
                 logger.log_debug_msg(f'Get {contract_detail.contract.symbol} previous close for closest to halt, rank: {contract_rank}', with_speech = False)
                 get_previous_close_req_id = RequestIdPrefix.CLOSEST_TO_HALT_DAY_CANDLE_REQ_ID_PREFIX.value + contract_rank
-                scanner_connector.reqHistoricalData(get_previous_close_req_id, contract_detail.contract, '', '2 D', Timeframe.ONE_DAY.value, 'TRADES', 1, 1, False, [])
+                scanner_connector.reqHistoricalData(get_previous_close_req_id, contract_detail.contract, '', previous_close_duration_str, Timeframe.ONE_DAY.value, 'TRADES', 1, 1, False, [])
                 
     def __get_one_minute_candle(self, scanner_connector):
         self.__single_ticker_ohlcv_list = []
