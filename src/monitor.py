@@ -21,6 +21,7 @@ logger = Logger()
 
 def main():
     connector = None
+    idle_msg_logged = False
     
     try:
         while True:
@@ -59,7 +60,9 @@ def main():
                 
                 scanner_connector.run()
             else:
-                logger.log_debug_msg('Scanner is idle...', with_speech = True)
+                if not idle_msg_logged:
+                    logger.log_debug_msg('Scanner is idle...', with_speech = True)
+                    idle_msg_logged = True
                 continue
     except Exception as e:
         if connector:
