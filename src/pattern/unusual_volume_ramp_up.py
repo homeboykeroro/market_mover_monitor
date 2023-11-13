@@ -63,27 +63,29 @@ class UnusualVolumeRampUp(PatternAnalyser):
     
                     datetime_idx_df = derive_idx_df(above_ma_df, numeric_idx=False)
                     close_df = self.__historical_data_df.loc[:, idx[:, Indicator.CLOSE]]
+                    previous_close_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
     
-                    pop_up_datetime_idx_df = datetime_idx_df.where(above_ma_df.values).ffill().iloc[[-1]]
-                    pop_up_close_df = close_df.where(above_ma_df.values).ffill().iloc[[-1]]
-                    pop_up_close_pct_df = close_pct_df.where(above_ma_df.values).ffill().iloc[[-1]]
-                    pop_up_volume_df = volume_df.where(above_ma_df.values).ffill().iloc[[-1]]
-                    pop_up_ma_vol_df = ma_vol_df.where(above_ma_df.values).ffill().iloc[[-1]]
+                    ramp_up_datetime_idx_df = datetime_idx_df.where(above_ma_df.values).ffill().iloc[[-1]]
+                    ramp_up_close_df = close_df.where(above_ma_df.values).ffill().iloc[[-1]]
+                    ramp_up_close_pct_df = close_pct_df.where(above_ma_df.values).ffill().iloc[[-1]]
+                    ramp_up_previous_close_pct_df = previous_close_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
+                    ramp_up_volume_df = volume_df.where(above_ma_df.values).ffill().iloc[[-1]]
+                    ramp_up_ma_vol_df = ma_vol_df.where(above_ma_df.values).ffill().iloc[[-1]]
     
                     for ticker in ticker_list:
-                        display_close = pop_up_close_df.loc[:, ticker].iat[0, 0]
-                        display_volume = pop_up_volume_df.loc[:, ticker].iat[0, 0]
-                        display_close_pct = round(pop_up_close_pct_df.loc[:, ticker].iat[0, 0], 2)
-                        display_ma_vol = pop_up_ma_vol_df.loc[:, ticker].iat[0, 0]
-                        display_previous_close_change = self.__historical_data_df.index[-1], idx[ticker, Indicator.CLOSE]
+                        display_close = ramp_up_close_df.loc[:, ticker].iat[0, 0]
+                        display_volume = ramp_up_volume_df.loc[:, ticker].iat[0, 0]
+                        display_close_pct = round(ramp_up_close_pct_df.loc[:, ticker].iat[0, 0], 2)
+                        display_ma_vol = ramp_up_ma_vol_df.loc[:, ticker].iat[0, 0]
+                        display_previous_close_change = round(ramp_up_previous_close_pct_df.loc[:, ticker].iat[0, 0], 2)
     
-                        pop_up_datetime = pop_up_datetime_idx_df.loc[:, ticker].iat[0, 0]
-                        pop_up_hour = pd.to_datetime(pop_up_datetime).hour
-                        pop_up_minute = pd.to_datetime(pop_up_datetime).minute
-                        display_hour = ('0' + str(pop_up_hour)) if pop_up_hour < 10 else pop_up_hour
-                        display_minute = ('0' + str(pop_up_minute)) if pop_up_minute < 10 else pop_up_minute
+                        ramp_up_datetime = ramp_up_datetime_idx_df.loc[:, ticker].iat[0, 0]
+                        ramp_up_hour = pd.to_datetime(ramp_up_datetime).hour
+                        ramp_up_minute = pd.to_datetime(ramp_up_datetime).minute
+                        display_hour = ('0' + str(ramp_up_hour)) if ramp_up_hour < 10 else ramp_up_hour
+                        display_minute = ('0' + str(ramp_up_minute)) if ramp_up_minute < 10 else ramp_up_minute
                         display_time_str = f'{display_hour}:{display_minute}'
-                        read_time_str = f'{pop_up_hour} {pop_up_minute}' if (pop_up_minute > 0) else f'{pop_up_hour} o clock' 
+                        read_time_str = f'{ramp_up_hour} {ramp_up_minute}' if (ramp_up_minute > 0) else f'{ramp_up_hour} o clock' 
                         read_ticker_str = " ".join(ticker)
     
                         logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(display_volume)/ display_ma_vol), 1)}', with_std_out = False)
