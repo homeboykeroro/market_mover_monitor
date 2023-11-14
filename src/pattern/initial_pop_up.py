@@ -24,7 +24,7 @@ class InitialPopUp(PatternAnalyser):
         self.__historical_data_df = historical_data_df
 
     def analyse(self) -> None:
-        logger.log_debug_msg('Initial pop up scan', with_speech = False)
+        logger.log_debug_msg('Initial pop up scan')
         start_time = time.time()
 
         close_pct_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.CLOSE_CHANGE]].rename(columns={CustomisedIndicator.CLOSE_CHANGE: RuntimeIndicator.COMPARE})
@@ -43,12 +43,12 @@ class InitialPopUp(PatternAnalyser):
         if len(new_gainer_ticker_list) > 0:
             datetime_idx_df = derive_idx_df(ramp_up_occurrence_df, numeric_idx=False)
             close_df = self.__historical_data_df.loc[:, idx[:, Indicator.CLOSE]]
-            previous_close_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
+            previous_close_pct_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
             volume_df = self.__historical_data_df.loc[:, idx[:, Indicator.VOLUME]]
             
             pop_up_close_df = close_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_close_pct_df = close_pct_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
-            pop_up_previous_close_pct_df = previous_close_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
+            pop_up_previous_close_pct_df = previous_close_pct_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_volume_df = volume_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_datetime_idx_df = datetime_idx_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
 
@@ -67,7 +67,7 @@ class InitialPopUp(PatternAnalyser):
                 read_time_str = f'{pop_up_hour} {pop_up_minute}' if (pop_up_minute > 0) else f'{pop_up_hour} o clock' 
                 read_ticker_str = " ".join(ticker)
 
-                logger.log_debug_msg(f'{read_ticker_str} is popping up {display_previous_close_pct} percent at {read_time_str}', with_std_out = False)
-                logger.log_debug_msg(f'{ticker} is popping up {display_previous_close_pct}%, Time: {display_time_str}, Close: ${display_close}, Change: {display_close_pct}%, Volume: {display_volume}', with_speech = False)
+                logger.log_debug_msg(f'{read_ticker_str} is popping up {display_previous_close_pct} percent at {read_time_str}', with_speech = True, with_log_file = False)
+                logger.log_debug_msg(f'{ticker} is popping up {display_previous_close_pct}%, Time: {display_time_str}, Close: ${display_close}, Change: {display_close_pct}%, Volume: {display_volume}', with_std_out = True)
 
-        logger.log_debug_msg(f'Initial pop up analysis time: {time.time() - start_time} seconds', with_speech = False)
+        logger.log_debug_msg(f'Initial pop up analysis time: {time.time() - start_time} seconds')

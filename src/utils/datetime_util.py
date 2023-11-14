@@ -13,7 +13,7 @@ def calculate_difference_in_minutes(datetime1: datetime, datetime2: datetime):
     difference = datetime1 - datetime2
     return int(difference.total_seconds() / 60)
 
-def get_trading_start_time_by_current_datetime(input_us_datetime: datetime) -> datetime:
+def get_trading_session_start_time_by_current_datetime(input_us_datetime: datetime) -> datetime:
     # Define trading hours in US/Eastern time
     pre_market_trading_hour_start_time = datetime.time(4, 0, 0)
     normal_trading_hour_start_time = datetime.time(9, 30, 0)

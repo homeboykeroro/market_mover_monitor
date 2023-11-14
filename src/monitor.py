@@ -19,7 +19,7 @@ from exception.after_hour_reset_exception import AfterHourResetException
 
 logger = Logger()
 
-def main():
+def main(has_after_hour_reset: bool = False):
     connector = None
     idle_msg_logged = False
     
@@ -28,9 +28,9 @@ def main():
             gainer_scan_code = get_top_gainer_scan_code()
             
             if gainer_scan_code is not None:
-                logger.log_debug_msg('Connecting...')
+                logger.log_debug_msg('Connecting...', with_speech = True, with_std_out = True)
                 
-                scanner_connector = ScannerConnector()
+                scanner_connector = ScannerConnector(has_after_hour_reset)
                 scanner_connector.connect('127.0.0.1', 7496, 0)
                 
                 # #API Scanner subscriptions update every 30 seconds, just as they do in TWS.
@@ -61,10 +61,12 @@ def main():
                 scanner_connector.run()
             else:
                 if not idle_msg_logged:
-                    logger.log_debug_msg('Scanner is idle...', with_speech = True)
+                    logger.log_debug_msg('Scanner is idle...', with_speech = True, with_std_out = True)
                     idle_msg_logged = True
                 continue
     except Exception as e:
+        has_after_hour_reset = False
+        
         if connector:
             connector.disconnect()
 
@@ -72,26 +74,27 @@ def main():
             sleep_time = 60
 
             os.system('cls')
-            logger.log_error_msg(f'TWS API Connection Lost, Cause: {e}', with_speech = False)
-            logger.log_error_msg('Re-establishing Connection Due to Connectivity Issue')
+            logger.log_error_msg(f'TWS API Connection Lost, Cause: {e}')
+            logger.log_error_msg('Re-establishing Connection Due to Connectivity Issue', with_speech = True, with_std_out = True)
 
         elif isinstance(e, AfterHourResetException):
             sleep_time = None
+            has_after_hour_reset = True
 
-            logger.log_debug_msg('Reset Scanner Scan Code for After Hours', with_speech = False)
-            logger.log_debug_msg('After Hour Scanner Reset')
+            logger.log_debug_msg('Reset Scanner Scan Code for After Hours')
+            logger.log_debug_msg('After Hour Scanner Reset', with_speech = True, with_std_out = True)
         else:
             sleep_time = 10
 
             os.system('cls')
-            logger.log_error_msg(traceback.format_exc(), with_speech = False)
-            logger.log_error_msg(f'Fatal Error, Cause: {e}', with_speech = False)
-            logger.log_error_msg('Re-establishing Connection Due to Fatal Error')
+            logger.log_error_msg(traceback.format_exc())
+            logger.log_error_msg(f'Fatal Error, Cause: {e}')
+            logger.log_error_msg('Re-establishing Connection Due to Fatal Error', with_speech = True, with_std_out = True)
         
         if sleep_time:
             time.sleep(sleep_time)
 
-        main()
+        main(has_after_hour_reset)
 
 if __name__ == '__main__':
     main()

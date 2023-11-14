@@ -16,7 +16,7 @@ idx = pd.IndexSlice
 logger = Logger()
 
 class UnusualVolumeRampUp(PatternAnalyser):
-    MIN_MARUBOZU_RATIO = 60
+    MIN_MARUBOZU_RATIO = 65
     MIN_CLOSE_PCT = 4.2
     MIN_VOLUME = 3000
     NOTIFY_PERIOD = 2
@@ -25,7 +25,7 @@ class UnusualVolumeRampUp(PatternAnalyser):
         self.__historical_data_df = historical_data_df
 
     def analyse(self) -> None:
-        logger.log_debug_msg('Unusual ramp up scan', with_speech = False)
+        logger.log_debug_msg('Unusual ramp up scan')
         start_time = time.time()
 
         close_pct_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.CLOSE_CHANGE]].rename(columns={CustomisedIndicator.CLOSE_CHANGE: RuntimeIndicator.COMPARE})
@@ -63,12 +63,12 @@ class UnusualVolumeRampUp(PatternAnalyser):
     
                     datetime_idx_df = derive_idx_df(above_ma_df, numeric_idx=False)
                     close_df = self.__historical_data_df.loc[:, idx[:, Indicator.CLOSE]]
-                    previous_close_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
+                    previous_close_pct_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
     
                     ramp_up_datetime_idx_df = datetime_idx_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_close_df = close_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_close_pct_df = close_pct_df.where(above_ma_df.values).ffill().iloc[[-1]]
-                    ramp_up_previous_close_pct_df = previous_close_df.where(ramp_up_boolean_df.values).ffill().iloc[[-1]]
+                    ramp_up_previous_close_pct_df = previous_close_pct_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_volume_df = volume_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_ma_vol_df = ma_vol_df.where(above_ma_df.values).ffill().iloc[[-1]]
     
@@ -77,7 +77,7 @@ class UnusualVolumeRampUp(PatternAnalyser):
                         display_volume = ramp_up_volume_df.loc[:, ticker].iat[0, 0]
                         display_close_pct = round(ramp_up_close_pct_df.loc[:, ticker].iat[0, 0], 2)
                         display_ma_vol = ramp_up_ma_vol_df.loc[:, ticker].iat[0, 0]
-                        display_previous_close_change = round(ramp_up_previous_close_pct_df.loc[:, ticker].iat[0, 0], 2)
+                        display_previous_close_pct = round(ramp_up_previous_close_pct_df.loc[:, ticker].iat[0, 0], 2)
     
                         ramp_up_datetime = ramp_up_datetime_idx_df.loc[:, ticker].iat[0, 0]
                         ramp_up_hour = pd.to_datetime(ramp_up_datetime).hour
@@ -88,8 +88,8 @@ class UnusualVolumeRampUp(PatternAnalyser):
                         read_time_str = f'{ramp_up_hour} {ramp_up_minute}' if (ramp_up_minute > 0) else f'{ramp_up_hour} o clock' 
                         read_ticker_str = " ".join(ticker)
     
-                        logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(display_volume)/ display_ma_vol), 1)}', with_std_out = False)
-                        logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close change: {display_previous_close_change}', with_speech = False)
+                        logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(display_volume)/ display_ma_vol), 1)}', with_speech = True, with_log_file = False)
+                        logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close change: {display_previous_close_pct}', with_std_out = True)
 
-        logger.log_debug_msg(f'Unusual volume analysis time: {time.time() - start_time} seconds', with_speech = False)
+        logger.log_debug_msg(f'Unusual volume analysis time: {time.time() - start_time} seconds')
 

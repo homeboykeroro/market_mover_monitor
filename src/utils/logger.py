@@ -6,26 +6,32 @@ from utils.text_to_speech_engine import TextToSpeechEngine
 
 class Logger:
     def __init__(self):
-        self.__logger = self.__get_logger(console_log=True)
+        self.__logger = self.__get_logger()
         self.__text_to_speech_engine = TextToSpeechEngine()
 
-    def log_debug_msg(self, msg: str, with_speech: bool = True, with_std_out: bool = True):
+    def log_debug_msg(self, msg: str, with_speech: bool = False, with_log_file: bool = True, with_std_out: bool = False):
         if with_std_out:
+            print(msg)
+        
+        if with_log_file:
             self.__logger.debug(msg)
         
-        if (with_speech):
+        if with_speech:
             self.__text_to_speech_engine.speak(msg)
             
-    def log_error_msg(self, msg: str, with_speech: bool = True):
-        self.__logger.exception(msg)
+    def log_error_msg(self, msg: str, with_speech: bool = False, with_log_file: bool = True, with_std_out: bool = False):
+        if with_std_out:
+            print(msg)
         
-        if (with_speech):
+        if with_log_file:
+            self.__logger.exception(msg)
+        
+        if with_speech:
             self.__text_to_speech_engine.speak(msg)
 
     def __get_logger(self, name: str = 'root',
                    log_parent_directory: str = 'C:/Users/John/Downloads/Trade History/Scanner',
                    level: int = logging.DEBUG,
-                   console_log: bool = True,
                    display_format: str = '\r%(asctime)s - %(message)s (%(levelname)s)',
                    date_format: str = '%m/%d/%Y %I:%M:%S %p'):
         log_date = datetime.now().strftime('%Y%m%d')
@@ -42,10 +48,5 @@ class Logger:
             formatter = logging.Formatter(display_format, datefmt=date_format)
             handler.setFormatter(formatter)
             logger.addHandler(handler)
-
-            if console_log:
-                console = logging.StreamHandler()
-                console.setLevel(level)
-                logger.addHandler(console)
 
         return logger

@@ -23,7 +23,7 @@ class ClosestToNewHighOrNewHigh(PatternAnalyser):
         self.__historical_data_df = historical_data_df
 
     def analyse(self) -> None:
-        logger.log_debug_msg('Closest to new high or new high scan', with_speech = False)
+        logger.log_debug_msg('Closest to new high or new high scan')
         start_time = time.time()
         
         # close_df = self.__historical_data_df.loc[:, idx[:, Indicator.CLOSE]].rename(columns={Indicator.CLOSE: RuntimeIndicator.COMPARE})

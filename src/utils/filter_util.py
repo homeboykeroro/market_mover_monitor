@@ -28,13 +28,13 @@ def get_top_gainer_scan_code():
 
     # Check which trading period the US time falls into
     if pre_market_trading_hour_start_time <= us_time.time() < normal_trading_hour_start_time:
-        logger.log_debug_msg('Pre-market trading hours', with_speech = False)
+        logger.log_debug_msg('Pre-market trading hours')
         return ScanCode.TOP_GAINERS.value
     elif normal_trading_hour_start_time <= us_time.time() < normal_trading_hour_end_time:
-        logger.log_debug_msg('Normal trading hours', with_speech = False)
+        logger.log_debug_msg('Normal trading hours')
         return ScanCode.TOP_GAINERS.value
     elif normal_trading_hour_end_time <= us_time.time() < after_hours_trading_hour_end_time:
-        logger.log_debug_msg('After hours trading hours', with_speech = False)
+        logger.log_debug_msg('After hours trading hours')
         return ScanCode.TOP_GAINERS_IN_AFTER_HOURS.value
     else:
         return None

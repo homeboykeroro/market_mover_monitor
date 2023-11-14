@@ -29,12 +29,12 @@ class HaltScannerEnd(ScannerConnectorCallBack):
         self.__halt_ticker_list = []
         
     def execute_scanner_data(self, req_id: int, rank: int, contract_details: ContractDetails) -> None:
-        logger.log_debug_msg(f'Halt scanner data, reqId: {req_id}', with_speech = False)
+        logger.log_debug_msg(f'Halt scanner data, reqId: {req_id}')
         
-        logger.log_debug_msg('Get scanner data for Halt', with_speech = False)
+        logger.log_debug_msg('Get scanner data for Halt')
         if rank == 0:
             if self.__start_time != None:
-                logger.log_debug_msg(f'Halt scanner refresh interval time: {time.time() - self.__start_time} seconds', with_speech = False)
+                logger.log_debug_msg(f'Halt scanner refresh interval time: {time.time() - self.__start_time} seconds')
                 
             self.__start_time = time.time()
             self.__halt_ticker_list = []
@@ -42,10 +42,17 @@ class HaltScannerEnd(ScannerConnectorCallBack):
         if re.match('^[a-zA-Z]{1,4}$', contract_details.contract.symbol): 
             self.__halt_ticker_list.append(contract_details.contract.symbol)
         else:
-            logger.log_debug_msg(f'Exclude invalid ticker of {contract_details.contract.symbol} from halt scanner result', with_speech = False)      
+            logger.log_debug_msg(f'Exclude invalid ticker of {contract_details.contract.symbol} from halt scanner result')      
         
     def execute_scanner_end(self, req_id: int, ticker_to_previous_close_dict: dict, scanner_connector) -> None:
-        logger.log_debug_msg(f'Halt scannerDataEnd, reqId: {req_id}, Result length: {len(self.__halt_ticker_list)}, Result: {self.__halt_ticker_list}', with_speech = False)
+        logger.log_debug_msg(f'Halt scannerDataEnd, reqId: {req_id}, Result length: {len(self.__halt_ticker_list)}, Result: {self.__halt_ticker_list}')
+        
+        if len(self.__halt_ticker_list) == 0:
+            logger.log_debug_msg('No items to retrieve in halt scanner')
+            return
+        
+        logger.log_debug_msg('Get halt info in halt scanner end')
+        
         us_current_datetime = datetime.datetime.now().astimezone(pytz.timezone('US/Eastern'))
         ticker_to_trade_halt_info_dict = retrieve_trade_halt_info()
         
@@ -71,8 +78,8 @@ class HaltScannerEnd(ScannerConnectorCallBack):
                 
                 time_interval = (us_current_datetime - halt_datetime).total_seconds() / 60
                 if time_interval <= self.TRADE_HALT_NOTIFY_TIMES and reason_code in self.TRADE_HALT_CODE_LIST:
-                    logger.log_debug_msg(f'{read_ticker_str} {read_reason_code_str} halt at {read_time_str}', with_std_out = False)
-                    logger.log_debug_msg(f'{ticker} {reason_code} ({HaltReason[reason_code].value}) at {display_halt_time}, Quoted resumption time: {display_resumption_quote_time}', with_speech = False)
+                    logger.log_debug_msg(f'{read_ticker_str} {read_reason_code_str} halt at {read_time_str}', with_speech = True, with_std_out = False)
+                    logger.log_debug_msg(f'{ticker} {reason_code} ({HaltReason[reason_code].value}) at {display_halt_time}, Quoted resumption time: {display_resumption_quote_time}', with_std_out = True)
     
     def execute_historical_data(self, req_id: int, bar: BarData, ticker_to_previous_close_dict: dict) -> None:
         pass 
