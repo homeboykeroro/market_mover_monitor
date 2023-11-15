@@ -88,7 +88,7 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
             high = bar.high
             low = bar.low
             close = bar.close
-            volume = bar.volume * 100
+            volume = bar.volume
             dt = bar.date.replace(" US/Eastern", "")
             logger.log_debug_msg(f'reqId: {req_id}, datetime: {dt}')
 
@@ -142,7 +142,6 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                 
                 close_pct_df = close_df.pct_change().mul(100).rename(columns={RuntimeIndicator.COMPARE: CustomisedIndicator.CLOSE_CHANGE})
                 close_pct_df.iloc[[0]] = previous_close_pct_df.iloc[[0]]
-                logger.log_debug_msg(f'Close percent change dataframe: {close_pct_df}')
                 
                 green_candle_df = (close_df > open_df).replace({True: CandleColour.GREEN, False: np.nan})
                 red_candle_df = (close_df < open_df).replace({True: CandleColour.RED, False: np.nan})
@@ -183,6 +182,12 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                                     vol_20_ma_df,
                                     vol_50_ma_df,
                                     vol_cumsum_df], axis=1)
+                
+                with pd.option_context('display.max_rows', None,
+                       'display.max_columns', None,
+                       'display.precision', 3,
+                       ):
+                    logger.log_debug_msg(f'Top gainer completed dataframe: {complete_df}', with_std_out = False)
 
                 for pattern in ScannerToTimeframePatterns.TOP_GAINER.value[timeframe_idx]:
                     logger.log_debug_msg(f'Scan {pattern.name} in {timeframe.name}')
@@ -234,8 +239,7 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                 logger.log_debug_msg('Timeframe interval less than 60 seconds')
                 return
             
-            timeframe_interval = str(int(timeframe_interval - truncate_seconds))
-            logger.log_debug_msg(f'Timeframe interval in seconds: {timeframe_interval}')
+            timeframe_interval = str(int(timeframe_interval))
             
             self.__timeframe_idx_to_single_ticker_ohlcv_list_dict = {}
             self.__timeframe_idx_to_datetime_list_dict = {}

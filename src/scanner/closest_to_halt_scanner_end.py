@@ -83,7 +83,7 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             high = bar.high
             low = bar.low
             close = bar.close
-            volume = bar.volume * 100
+            volume = bar.volume
             dt = bar.date.replace(" US/Eastern", "")
             logger.log_debug_msg(f'reqId: {req_id}, datetime: {dt}')
 
@@ -100,8 +100,7 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             ticker_to_indicator_column = pd.MultiIndex.from_product([[self.__closest_to_halt_ticker_list[rank]], [Indicator.OPEN, Indicator.HIGH, Indicator.LOW, Indicator.CLOSE, Indicator.VOLUME]])
             single_ticker_candle_df = pd.DataFrame(self.__single_ticker_ohlcv_list, columns=ticker_to_indicator_column, index=datetime_index)
             self.__candle_df_list.append(single_ticker_candle_df)
-            logger.log_debug_msg(f'{self.__closest_to_halt_ticker_list[rank]} datetime list: {self.__datetime_list}, dataframe: {single_ticker_candle_df}')
-
+            
             self.__single_ticker_ohlcv_list = []
             self.__datetime_list = []
 
@@ -123,14 +122,21 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             complete_df = pd.concat([all_ticker_one_minute_candle_df, 
                                      close_pct_df,
                                      previous_close_pct_df], axis=1)
-                
+            
+            with pd.option_context('display.max_rows', None,
+                       'display.max_columns', None,
+                       'display.precision', 3,
+                       ):
+                    logger.log_debug_msg(f'Closest to halt completed dataframe: {complete_df}', with_std_out = False)
+            
             for ticker in self.__closest_to_halt_ticker_list:
                 read_ticker_str = " ".join(ticker)
                 
                 display_close = complete_df.loc[complete_df.index[-1], idx[ticker, Indicator.CLOSE]]
                 display_volume = complete_df.loc[complete_df.index[-1], idx[ticker, Indicator.VOLUME]]
-                display_close_pct = complete_df.loc[complete_df.index[-1], idx[ticker, CustomisedIndicator.CLOSE_CHANGE]]
-                display_previous_close_pct = complete_df.loc[complete_df.index[-1], idx[ticker, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
+                
+                display_close_pct = round(complete_df.loc[complete_df.index[-1], idx[ticker, CustomisedIndicator.CLOSE_CHANGE]], 2)
+                display_previous_close_pct = round(complete_df.loc[complete_df.index[-1], idx[ticker, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]], 2)
                 
                 pop_up_datetime = complete_df.index[-1]
                 pop_up_hour = pd.to_datetime(pop_up_datetime).hour
