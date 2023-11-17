@@ -63,20 +63,23 @@ class UnusualVolumeRampUp(PatternAnalyser):
     
                     datetime_idx_df = derive_idx_df(above_ma_df, numeric_idx=False)
                     close_df = self.__historical_data_df.loc[:, idx[:, Indicator.CLOSE]]
+                    previous_close_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE]]
                     previous_close_pct_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
     
                     ramp_up_datetime_idx_df = datetime_idx_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_close_df = close_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_close_pct_df = close_pct_df.where(above_ma_df.values).ffill().iloc[[-1]]
+                    ramp_up_previous_close_df = previous_close_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_previous_close_pct_df = previous_close_pct_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_volume_df = volume_df.where(above_ma_df.values).ffill().iloc[[-1]]
                     ramp_up_ma_vol_df = ma_vol_df.where(above_ma_df.values).ffill().iloc[[-1]]
     
                     for ticker in ticker_list:
                         display_close = ramp_up_close_df.loc[:, ticker].iat[0, 0]
-                        display_volume = ramp_up_volume_df.loc[:, ticker].iat[0, 0]
+                        display_volume = "{:,}".format(ramp_up_volume_df.loc[:, ticker].iat[0, 0])
                         display_close_pct = round(ramp_up_close_pct_df.loc[:, ticker].iat[0, 0], 2)
                         display_ma_vol = ramp_up_ma_vol_df.loc[:, ticker].iat[0, 0]
+                        display_previous_close = ramp_up_previous_close_df.loc[:, ticker].iat[0, 0]
                         display_previous_close_pct = round(ramp_up_previous_close_pct_df.loc[:, ticker].iat[0, 0], 2)
     
                         ramp_up_datetime = ramp_up_datetime_idx_df.loc[:, ticker].iat[0, 0]
@@ -89,7 +92,7 @@ class UnusualVolumeRampUp(PatternAnalyser):
                         read_ticker_str = " ".join(ticker)
     
                         logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(display_volume)/ display_ma_vol), 1)}', with_speech = True, with_log_file = False)
-                        logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close change: {display_previous_close_pct}', with_std_out = True)
+                        logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close: {display_previous_close}, Previous close change: {display_previous_close_pct}', with_std_out = True)
 
         logger.log_debug_msg(f'Unusual volume analysis time: {time.time() - start_time} seconds')
 

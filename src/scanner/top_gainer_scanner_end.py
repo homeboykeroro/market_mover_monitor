@@ -127,8 +127,12 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                 logger.log_debug_msg(f'Append customised indicators for {timeframe.name} dataframe')
                 concat_df_list = self.__timeframe_idx_to_candle_df_list_dict[timeframe_idx]
                 all_ticker_individual_timeframe_candle_df = pd.concat(concat_df_list, axis=1)
-                previous_close_list = [float(ticker_to_previous_close_dict[ticker]) for ticker in self.__top_gainer_ticker_list]
-                logger.log_debug_msg(f'Tickers list: {self.__top_gainer_ticker_list}, previous close list: {previous_close_list}')
+                previous_close_list = [[float(ticker_to_previous_close_dict[ticker]) for ticker in self.__top_gainer_ticker_list]]
+                previous_close_df = pd.DataFrame(np.repeat(previous_close_list, 
+                                                                len(all_ticker_individual_timeframe_candle_df), 
+                                                                axis=0),
+                                                 columns=pd.MultiIndex.from_product([self.__top_gainer_ticker_list, [CustomisedIndicator.PREVIOUS_CLOSE]]),
+                                                 index=all_ticker_individual_timeframe_candle_df.index)
                 
                 open_df = all_ticker_individual_timeframe_candle_df.loc[:, idx[:, Indicator.OPEN]].rename(columns={Indicator.OPEN: RuntimeIndicator.COMPARE})
                 high_df = all_ticker_individual_timeframe_candle_df.loc[:, idx[:, Indicator.HIGH]]
@@ -136,9 +140,9 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                 close_df = all_ticker_individual_timeframe_candle_df.loc[:, idx[:, Indicator.CLOSE]].rename(columns={Indicator.CLOSE: RuntimeIndicator.COMPARE})
                 vol_df = all_ticker_individual_timeframe_candle_df.loc[:, idx[:, Indicator.VOLUME]].astype(float, errors = 'raise')
 
-                previous_close_pct_df = (((close_df.sub(previous_close_list))
-                                                .div(previous_close_list))
-                                                .mul(100)).rename(columns={RuntimeIndicator.COMPARE: CustomisedIndicator.PREVIOUS_CLOSE_CHANGE})
+                previous_close_pct_df = (((close_df.sub(previous_close_df.values))
+                                                   .div(previous_close_df.values))
+                                                   .mul(100)).rename(columns={RuntimeIndicator.COMPARE: CustomisedIndicator.PREVIOUS_CLOSE_CHANGE})
                 
                 close_pct_df = close_df.pct_change().mul(100).rename(columns={RuntimeIndicator.COMPARE: CustomisedIndicator.CLOSE_CHANGE})
                 close_pct_df.iloc[[0]] = previous_close_pct_df.iloc[[0]]
@@ -175,6 +179,7 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
 
                 complete_df = pd.concat([all_ticker_individual_timeframe_candle_df, 
                                     close_pct_df,
+                                    previous_close_df,
                                     previous_close_pct_df,
                                     colour_df,
                                     marubozu_ratio_df,

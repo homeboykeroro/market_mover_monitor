@@ -2,6 +2,7 @@ import re
 import time
 import pytz
 import datetime
+import numpy as np
 import pandas as pd
 
 from ibapi.common import BarData
@@ -114,13 +115,20 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             
             close_df = all_ticker_one_minute_candle_df.loc[:, idx[:, Indicator.CLOSE]]
             close_pct_df = close_df.pct_change().mul(100).rename(columns={Indicator.CLOSE: CustomisedIndicator.CLOSE_CHANGE})
-            previous_close_list = [float(ticker_to_previous_close_dict[ticker]) for ticker in self.__closest_to_halt_ticker_list]
-            previous_close_pct_df = (((close_df.sub(previous_close_list))
-                                                .div(previous_close_list))
+            previous_close_list = [[float(ticker_to_previous_close_dict[ticker]) for ticker in self.__closest_to_halt_ticker_list]]
+            previous_close_df = pd.DataFrame(np.repeat(previous_close_list, 
+                                                                len(all_ticker_one_minute_candle_df), 
+                                                                axis=0),
+                                                 columns=pd.MultiIndex.from_product([self.__closest_to_halt_ticker_list, [CustomisedIndicator.PREVIOUS_CLOSE]]),
+                                                 index=all_ticker_one_minute_candle_df.index)
+            
+            previous_close_pct_df = (((close_df.sub(previous_close_df.values))
+                                                .div(previous_close_df.values))
                                                 .mul(100)).rename(columns={Indicator.CLOSE: CustomisedIndicator.PREVIOUS_CLOSE_CHANGE})
             
             complete_df = pd.concat([all_ticker_one_minute_candle_df, 
                                      close_pct_df,
+                                     previous_close_df, 
                                      previous_close_pct_df], axis=1)
             
             with pd.option_context('display.max_rows', None,
