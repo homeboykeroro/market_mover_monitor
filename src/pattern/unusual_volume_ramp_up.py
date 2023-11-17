@@ -76,7 +76,8 @@ class UnusualVolumeRampUp(PatternAnalyser):
     
                     for ticker in ticker_list:
                         display_close = ramp_up_close_df.loc[:, ticker].iat[0, 0]
-                        display_volume = "{:,}".format(ramp_up_volume_df.loc[:, ticker].iat[0, 0])
+                        volume = ramp_up_volume_df.loc[:, ticker].iat[0, 0]
+                        display_volume = "{:,}".format(volume)
                         display_close_pct = round(ramp_up_close_pct_df.loc[:, ticker].iat[0, 0], 2)
                         display_ma_vol = ramp_up_ma_vol_df.loc[:, ticker].iat[0, 0]
                         display_previous_close = ramp_up_previous_close_df.loc[:, ticker].iat[0, 0]
@@ -91,8 +92,8 @@ class UnusualVolumeRampUp(PatternAnalyser):
                         read_time_str = f'{ramp_up_hour} {ramp_up_minute}' if (ramp_up_minute > 0) else f'{ramp_up_hour} o clock' 
                         read_ticker_str = " ".join(ticker)
     
-                        logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(display_volume)/ display_ma_vol), 1)}', with_speech = True, with_log_file = False)
-                        logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(display_volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close: {display_previous_close}, Previous close change: {display_previous_close_pct}', with_std_out = True)
+                        logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(volume)/ display_ma_vol), 1)}', with_speech = True, with_log_file = False)
+                        logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume, Time: {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Volume ratio: {round((float(volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close: {display_previous_close}, Previous close change: {display_previous_close_pct}%', with_std_out = True)
 
         logger.log_debug_msg(f'Unusual volume analysis time: {time.time() - start_time} seconds')
 
