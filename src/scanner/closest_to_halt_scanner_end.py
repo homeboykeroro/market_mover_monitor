@@ -114,6 +114,7 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             all_ticker_one_minute_candle_df = pd.concat(concat_df_list, axis=1)
             
             close_df = all_ticker_one_minute_candle_df.loc[:, idx[:, Indicator.CLOSE]]
+            vol_df = all_ticker_one_minute_candle_df.loc[:, idx[:, Indicator.VOLUME]].astype(float, errors = 'raise')
             close_pct_df = close_df.pct_change().mul(100).rename(columns={Indicator.CLOSE: CustomisedIndicator.CLOSE_CHANGE})
             previous_close_list = [[float(ticker_to_previous_close_dict[ticker]) for ticker in self.__closest_to_halt_ticker_list]]
             previous_close_df = pd.DataFrame(np.repeat(previous_close_list, 
@@ -125,23 +126,26 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
             previous_close_pct_df = (((close_df.sub(previous_close_df.values))
                                                 .div(previous_close_df.values))
                                                 .mul(100)).rename(columns={Indicator.CLOSE: CustomisedIndicator.PREVIOUS_CLOSE_CHANGE})
+            vol_cumsum_df = vol_df.cumsum().rename(columns={Indicator.VOLUME: CustomisedIndicator.TOTAL_VOLUME})
             
             complete_df = pd.concat([all_ticker_one_minute_candle_df, 
                                      close_pct_df,
                                      previous_close_df, 
-                                     previous_close_pct_df], axis=1)
+                                     previous_close_pct_df,
+                                     vol_cumsum_df], axis=1)
             
             with pd.option_context('display.max_rows', None,
                        'display.max_columns', None,
                        'display.precision', 3,
                        ):
-                    logger.log_debug_msg(f'Closest to halt completed dataframe: {complete_df}', with_std_out = False)
+                    logger.log_debug_msg(f'Closest to halt completed dataframe: {complete_df}', with_log_file = False, with_std_out = False)
             
             for ticker in self.__closest_to_halt_ticker_list:
                 read_ticker_str = " ".join(ticker)
                 
                 display_close = complete_df.loc[complete_df.index[-1], idx[ticker, Indicator.CLOSE]]
-                display_volume = complete_df.loc[complete_df.index[-1], idx[ticker, Indicator.VOLUME]]
+                display_volume = "{:,}".format(complete_df.loc[complete_df.index[-1], idx[ticker, Indicator.VOLUME]])
+                display_total_volume = "{:,}".format(complete_df.loc[complete_df.index[-1], idx[ticker, CustomisedIndicator.TOTAL_VOLUME]])
                 
                 display_close_pct = round(complete_df.loc[complete_df.index[-1], idx[ticker, CustomisedIndicator.CLOSE_CHANGE]], 2)
                 display_previous_close_pct = round(complete_df.loc[complete_df.index[-1], idx[ticker, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]], 2)
@@ -155,7 +159,7 @@ class ClosestToHaltScannerEnd(ScannerConnectorCallBack):
                 read_time_str = f'{pop_up_hour} {pop_up_minute}' if (pop_up_minute > 0) else f'{pop_up_hour} o clock' 
                 
                 logger.log_debug_msg(f'{read_ticker_str} closest to halt at {read_time_str}', with_speech = True, with_log_file = False, with_std_out = False)
-                logger.log_debug_msg(f'{ticker} closest to halt at {display_time_str}, Close: {display_close}, Volume: {display_volume}, Close change: {display_close_pct}%, Previous close change: {display_previous_close_pct}%', with_std_out = True)
+                logger.log_debug_msg(f'{ticker} closest to halt at {display_time_str}, Close: {display_close}, Volume: {display_volume}, Total volume: {display_total_volume}, Close change: {display_close_pct}%, Previous close change: {display_previous_close_pct}%', with_std_out = True)
                     
     def __get_previous_close(self, ticker_to_previous_close_dict: dict, scanner_connector):
         logger.log_debug_msg('Get previous close for closest to halt ticker')

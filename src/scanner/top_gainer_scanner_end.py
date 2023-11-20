@@ -192,7 +192,7 @@ class TopGainerScannerEnd(ScannerConnectorCallBack):
                        'display.max_columns', None,
                        'display.precision', 3,
                        ):
-                    logger.log_debug_msg(f'Top gainer completed dataframe: {complete_df}', with_std_out = False)
+                    logger.log_debug_msg(f'Top gainer completed dataframe: {complete_df}', with_log_file = False, with_std_out = False)
 
                 for pattern in ScannerToTimeframePatterns.TOP_GAINER.value[timeframe_idx]:
                     logger.log_debug_msg(f'Scan {pattern.name} in {timeframe.name}')

@@ -46,17 +46,20 @@ class InitialPopUp(PatternAnalyser):
             previous_close_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE]]
             previous_close_pct_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.PREVIOUS_CLOSE_CHANGE]]
             volume_df = self.__historical_data_df.loc[:, idx[:, Indicator.VOLUME]]
+            total_volume_df = self.__historical_data_df.loc[:, idx[:, CustomisedIndicator.TOTAL_VOLUME]]
             
             pop_up_close_df = close_df.where(pop_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_close_pct_df = close_pct_df.where(pop_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_previous_close_df = previous_close_df.where(pop_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_previous_close_pct_df = previous_close_pct_df.where(pop_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_volume_df = volume_df.where(pop_up_boolean_df.values).ffill().iloc[[-1]]
+            pop_up_total_volume_df = total_volume_df.where(pop_up_boolean_df.values).ffill().iloc[[-1]]
             pop_up_datetime_idx_df = datetime_idx_df.where(pop_up_boolean_df.values).ffill().iloc[[-1]]
 
             for ticker in new_gainer_ticker_list:
                 display_close = pop_up_close_df.loc[:, ticker].iat[0, 0]
                 display_volume = "{:,}".format(pop_up_volume_df.loc[:, ticker].iat[0, 0])
+                display_total_volume = "{:,}".format(pop_up_total_volume_df.loc[:, ticker].iat[0, 0])
                 display_close_pct = round(pop_up_close_pct_df.loc[:, ticker].iat[0, 0], 2)
                 display_previous_close_pct = round(pop_up_previous_close_pct_df.loc[:, ticker].iat[0, 0], 2)
                 display_previous_close = pop_up_previous_close_df.loc[:, ticker].iat[0, 0]
@@ -71,6 +74,6 @@ class InitialPopUp(PatternAnalyser):
                 read_ticker_str = " ".join(ticker)
 
                 logger.log_debug_msg(f'{read_ticker_str} is popping up {display_previous_close_pct} percent at {read_time_str}', with_speech = True, with_log_file = False)
-                logger.log_debug_msg(f'{ticker} is popping up {display_previous_close_pct}%, Time: {display_time_str}, Close: ${display_close}, Previous close: {display_previous_close}, Change: {display_close_pct}%, Volume: {display_volume}', with_std_out = True)
+                logger.log_debug_msg(f'{ticker} is popping up {display_previous_close_pct}% at {display_time_str}, Close: ${display_close}, Previous close: {display_previous_close}, Change: {display_close_pct}%, Volume: {display_volume}, Total volume: {display_total_volume}', with_std_out = True)
 
         logger.log_debug_msg(f'Initial pop up analysis time: {time.time() - start_time} seconds')
