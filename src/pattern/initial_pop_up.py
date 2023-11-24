@@ -73,7 +73,7 @@ class InitialPopUp(PatternAnalyser):
                 read_time_str = f'{pop_up_hour} {pop_up_minute}' if (pop_up_minute > 0) else f'{pop_up_hour} o clock' 
                 read_ticker_str = " ".join(ticker)
 
-                logger.log_debug_msg(f'{read_ticker_str} is popping up {display_previous_close_pct} percent at {read_time_str}', with_speech = True, with_log_file = False)
                 logger.log_debug_msg(f'{ticker} is popping up {display_previous_close_pct}% at {display_time_str}, Close: ${display_close}, Previous close: {display_previous_close}, Change: {display_close_pct}%, Volume: {display_volume}, Total volume: {display_total_volume}', with_std_out = True)
+                logger.log_debug_msg(f'{read_ticker_str} is popping up {display_previous_close_pct} percent at {read_time_str}', with_speech = True, with_log_file = False)
 
         logger.log_debug_msg(f'Initial pop up analysis time: {time.time() - start_time} seconds')

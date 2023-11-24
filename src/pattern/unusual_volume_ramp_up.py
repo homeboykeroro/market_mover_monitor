@@ -94,8 +94,8 @@ class UnusualVolumeRampUp(PatternAnalyser):
                         read_time_str = f'{ramp_up_hour} {ramp_up_minute}' if (ramp_up_minute > 0) else f'{ramp_up_hour} o clock' 
                         read_ticker_str = " ".join(ticker)
     
-                        logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(volume)/ display_ma_vol), 1)}', with_speech = True, with_log_file = False)
                         logger.log_debug_msg(f'{ticker} ramp up {display_close_pct}% above {ma_val}MA volume at {display_time_str}, {ma_val}MA volume: {display_ma_vol}, Volume: {display_volume}, Total volume: {display_total_volume}, Volume ratio: {round((float(volume)/ display_ma_vol), 1)}, Close: ${display_close}, Previous close: {display_previous_close}, Previous close change: {display_previous_close_pct}%', with_std_out = True)
+                        logger.log_debug_msg(f'{read_ticker_str} ramp up {display_close_pct} percent above {ma_val} M A volume at {read_time_str}, Ratio: {round((float(volume)/ display_ma_vol), 1)}', with_speech = True, with_log_file = False)
 
         logger.log_debug_msg(f'Unusual volume analysis time: {time.time() - start_time} seconds')
 
